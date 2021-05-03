@@ -12,10 +12,10 @@ const PORT = 3000;
 app.post("/create", async (req, res) => {
   const { data, error } = await supabase.from("Parks").insert([
     {
-      parkName: "Mojave Desert",
-      directionsURL: "www.mojave.com",
-      moreInfoURL: "wwww.moremojaveinfo.com",
-      userId: 3,
+      parkName: "Redwood Forest",
+      directionsURL: "www.redwoods.com",
+      moreInfoURL: "wwww.moreredwoodinfo.com",
+      userId: 4,
     },
   ]);
   res.send("WORKED!");
