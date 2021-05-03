@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "jnyxqkmd",
-    "password": "5Xv-PT49QuObKWT_PehZEwH05P2hRoDG",
-    "database": "jnyxqkmd",
-    "host": "queenie.db.elephantsql.com",
+    "username": "postgres",
+    "password": "p@rkR@nger$5!!!",
+    "database": "postgres",
+    "host": "db.trvnebvemlsnomuzdgff.supabase.co",
     "dialect": "postgres"
   },
   "test": {
