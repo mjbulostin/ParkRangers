@@ -7,11 +7,33 @@
     <title>Explore</title>
   </head>
   <body>
-    <iframe
+    <div class="main">
+        <label for="regions"></label>
+        <div class="regionContainer">
+          <div class="row-fluid">
+            <select class="selectpicker" data-show-subtext="False" data-live-search="true">
+              <option value="selectAll" data-subtext="Region">Select All</option>
+              <option value="northeast" data-subtext="Region">Northeast</option>
+              <option value="west"data-subtext="Region">West</option>
+              <option value="midwest"data-subtext="Region">Midwest</option>
+              <option value="southwest"data-subtext="Region">Southwest</option>
+              <option value="southeast"data-subtext="Region">Southeast</option>
+
+            </select>
+          </div>
+        </div>
+      </div>
+      </html>
+
+      <!-- <iframe
       src="https://studio.here.com/viewer/?project_id=4c1d0b3a-8515-4162-b0e2-181b19270add"
       frameborder="0"
       height="500"
       width="500"
-    ></iframe>
-  </body>
+      ></iframe> -->
+    </body>
+    <script src="explore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 </html>
