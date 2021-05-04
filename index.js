@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const passport = require('passport')
 const es6Renderer = require("express-es6-template-engine");
 app.engine("html", es6Renderer);
 app.set("views", "client"); // will set when there is a folder to connect to
@@ -11,6 +12,10 @@ app.use(
   })
 );
 
+
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 const path = require("path");
 const bcrypt = require("bcrypt");
@@ -57,9 +62,36 @@ app.post('/register', async (req,res) => {
       password: hash,
     },
   ]);
-  console.log("BACKEND INSERTION")
-  res.render('explore')
+  console.log("REGISTERED")
+  res.redirect('explore')
 })
+
+app.get('/login', (req,res) => {
+  res.render('login')
+})
+app.post("/login", async (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  const { user, error } = await supabase
+    .from("Users")
+    .select()
+    .match({ username: username })
+  if (user != null) {
+    console.log("not null")
+    bcrypt.compare(password, user.password, (error, result) => {
+      if (result) {
+        if (req.session) {
+          req.session.user = { userId: user.id };
+          res.redirect("explore");
+        }
+      } else {
+        res.send("no result");
+      }
+    });
+  } else {
+    res.render("login", { message: "Incorrect Username or Password" });
+  }
+});
 
 // Pulls all data from "Users" table. Console logging to ensure data is pulled correctly.
 // app.get("/getdata", async (req, res) => {
