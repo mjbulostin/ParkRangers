@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const passport = require('passport')
 const es6Renderer = require("express-es6-template-engine");
 app.engine("html", es6Renderer);
 app.set("views", "client"); // will set when there is a folder to connect to
