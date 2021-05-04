@@ -1,5 +1,18 @@
 const express = require("express");
 const app = express();
+const es6Renderer = require("express-es6-template-engine");
+app.engine("html", es6Renderer);
+// app.set("views", "template"); // will set when there is a folder to connect to
+// app.set("view engine", "html"); // will set when there is a folder to connect to
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+const path = require("path");
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 const { createClient } = require("@supabase/supabase-js");
 const supabase = createClient(
   "https://trvnebvemlsnomuzdgff.supabase.co",
