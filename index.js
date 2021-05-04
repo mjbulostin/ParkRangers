@@ -11,8 +11,6 @@ app.use(
   })
 );
 
-
-
 const path = require("path");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
@@ -21,14 +19,15 @@ const supabase = createClient(
   "https://trvnebvemlsnomuzdgff.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMDA2MTU1NCwiZXhwIjoxOTM1NjM3NTU0fQ.J892pC3M_hmQCZ91fkQoo-iUXuOoQuNrYzZ7la_idIk"
 );
-app.use(session({
-  secret: 'aksdjfj33',
-  resave: false,
-  saveUninitialized: false
-}))
+app.use(
+  session({
+    secret: "aksdjfj33",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 const PORT = 3000;
-
 
 // // creates entry into "Parks" method using data supplied. Can pull this data from a form on site.
 // app.post("/create", async (req, res) => {
@@ -43,10 +42,10 @@ const PORT = 3000;
 //   res.send("WORKED!");
 // });
 
-app.get('/register', (req,res) => {
-  console.log(req.body)
-  res.render('register')
-})
+app.get("/register", (req, res) => {
+  console.log(req.body);
+  res.render("register");
+});
 
 app.post("/register", async (req, res) => {
   const { firstName, lastName, email, username, password } = req.body;
@@ -65,37 +64,32 @@ app.post("/register", async (req, res) => {
   res.redirect("explore");
 });
 
-app.get('/login', (req,res) => {
-  res.render('login')
-})
+app.get("/login", (req, res) => {
+  res.render("login");
+});
 app.post("/login", async (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
   const { data, error } = await supabase
     .from("Users")
     .select()
-    .match({ username: username })
-  if (data != null) {
-    console.log(data)
-    bcrypt.compare(password, data.password, async (error, result) => {
-      console.log(result)
+    .match({ username: username });
+  if (data.length > 0) {
+    bcrypt.compare(req.body.password, data[0].password, (error, result) => {
       if (result) {
-        console.log(result)
-      //   if (req.session) {
-      //     res.redirect('explore');
-      //   }
-      // } else {
-      //   res.redirect('login');
+        res.redirect("explore");
+      } else {
+        res.render("login", { locals: { message: "Check Your Password" } });
       }
-    })
+    });
   } else {
-    res.render("login", { message: "Incorrect Username or Password" });
+    res.render("login");
   }
 });
 
-app.get('/explore', (req,res) => {
-  res.render('explore')
-})
+app.get("/explore", (req, res) => {
+  res.render("explore");
+});
 
 // Pulls all data from "Users" table. Console logging to ensure data is pulled correctly.
 // app.get("/getdata", async (req, res) => {
