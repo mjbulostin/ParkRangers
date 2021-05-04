@@ -4,36 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> -->
     <title>Explore</title>
   </head>
   <body>
     <div class="main">
-        <label for="regions"></label>
-        <div class="regionContainer">
-          <div class="row-fluid">
-            <select class="selectpicker" data-show-subtext="False" data-live-search="true">
-              <option value="selectAll" data-subtext="Region">Select All</option>
-              <option value="northeast" data-subtext="Region">Northeast</option>
-              <option value="west"data-subtext="Region">West</option>
-              <option value="midwest"data-subtext="Region">Midwest</option>
-              <option value="southwest"data-subtext="Region">Southwest</option>
-              <option value="southeast"data-subtext="Region">Southeast</option>
+      <label for="regions"></label>
+      <div class="regionContainer">
+        <div class="row-fluid">
+          <label for="selectpicker">Choose a Region to Explore</label>
+          <select class="selectpicker" data-show-subtext="False" data-live-search="true">
+            <option value="selectOne" data-subtext="Region">Regions</option>
+            <option value="northeast" data-subtext="Region">Northeast</option>
+            <option value="west"data-subtext="Region">West</option>
+            <option value="midwest"data-subtext="Region">Midwest</option>
+            <option value="southwest"data-subtext="Region">Southwest</option>
+            <option value="southeast"data-subtext="Region">Southeast</option>
+          </select>
+          <form class="dates" method="post"></form>
+            <label for="start">Start Date:</label>
 
-            </select>
-          </div>
+            <input type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2021-01-01" max="2022-12-31">
+            
+            <label for="start">End Date:</label>
+            <input type="date" id="end" name="trip-start"
+            value="2018-07-22"
+            min="2021-01-01" max="2022-12-31">
         </div>
       </div>
-      </html>
+    </div>
+    </html>
 
-      <!-- <iframe
-      src="https://studio.here.com/viewer/?project_id=4c1d0b3a-8515-4162-b0e2-181b19270add"
-      frameborder="0"
-      height="500"
-      width="500"
-      ></iframe> -->
-    </body>
-    <script src="explore.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+  </body>>
+  
+  <script src="explore.js"></script>
+
 </html>

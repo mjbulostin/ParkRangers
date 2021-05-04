@@ -3,16 +3,16 @@ let regionContainer = document.querySelector("#regioncontainer");
 
 
 // if region == 
- const statesByRegion = {
+const statesByRegion = {
     west:["AK","NV","CA","AZ","WA","OR","ID"],
     midwest:["ND","SE","MD","NE","KS","OK","IA","MN","WI","IL","IN","MI","OH","KY","TN","MO"],
     southeast:["FL","GA","SC","NC","AL"],
     southwest:["NM","TX","AK","MS","AL","LA"],
     northeast:["ME","VT","NH","NY","PA","NJ","MD","DE","NJ","WV","VA"]
-
 }
 
- const getParkByRegion = async (region) => {
+
+const getParkByRegion = async (region) => {
     const states = statesByRegion[region]
     console.log(region)
     const getInfo = await fetch(
@@ -55,7 +55,6 @@ let regionContainer = document.querySelector("#regioncontainer");
       parkList.append(parkContainer);
     }
 };
-// getParkByRegion()
     
 let selector = document.querySelector(".selectpicker");
 selector.addEventListener("change", (e) => {  
