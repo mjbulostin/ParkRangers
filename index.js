@@ -20,6 +20,7 @@ const supabase = createClient(
 );
 
 const PORT = 3000;
+const SALT_ROUNDS = 10;
 
 // creates entry into "Parks" method using data supplied. Can pull this data from a form on site.
 app.post("/create", async (req, res) => {
