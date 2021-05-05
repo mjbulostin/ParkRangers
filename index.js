@@ -31,6 +31,8 @@ app.use(
 app.use(cors());
 app.use(express.static(path.join(__dirname, "/client")));
 
+let parkIdGlobal = "";
+
 const PORT = 3000;
 
 app.get("/register", (req, res) => {
@@ -63,6 +65,24 @@ app.post("/addToParksDB", async (req, res) => {
       directionsURL: directionsURL,
       moreInfoURL: moreInfoURL,
       userId: req.session.user.userId,
+    },
+  ]);
+  console.log(data);
+  parkIdGlobal = data[0].id;
+  res.send("WORKS~!");
+});
+
+app.post("/addToTripsDB", async (req, res) => {
+  const { tripName, startDate, endDate } = req.body;
+  console.log(parkIdGlobal);
+
+  const { data, error } = await supabase.from("Trips").insert([
+    {
+      userId: req.session.user.userId,
+      tripName: tripName,
+      startDate: startDate,
+      endDate: endDate,
+      parkId: parkIdGlobal,
     },
   ]);
   console.log(data);
