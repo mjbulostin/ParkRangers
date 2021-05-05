@@ -14,7 +14,9 @@
   <body>
     <div class="main">
       <form class="fullSearch">
-        <h1>Hey Explorer, can you answer a few questions for me?</h1>
+        <h1>What would you like to name your trip?</h1>
+        <input type="text" name="trip-name" class="trip" />
+
         <label for="regions"></label>
         <div class="regionContainer">
           <div class="row-fluid">
@@ -46,14 +48,6 @@
             >
               <option value="">States</option>
             </select>
-
-            <h2>Will you be camping?</h2>
-            <label for="camping"> YEAH! Outdoors are my jam! </label>
-            <input type="radio" name="camping" id="camping" />
-            <label for="nocamp">NO! Ewww bugs! </label>
-            <input type="radio" name="camping" />
-            <!-- <button id="camping">TENT ACCESS</button> -->
-
             <h2>When are you going?</h2>
             <label for="start">Exploration Kick Off: </label>
 
@@ -79,6 +73,5 @@
       </form>
     </div>
   </body>
-
-  <script src="explore.js"></script>
+  <script type="text/javascript" src="./explore.js"></script>
 </html>

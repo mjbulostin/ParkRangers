@@ -27,9 +27,28 @@ const statesByRegion = {
   northeast: ["ME", "VT", "NH", "NY", "PA", "NJ", "MD", "DE", "NJ", "WV", "VA"],
 };
 
+let tripList = [];
+let form = document.querySelector("form.fullSearch");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const state = stateSelector.value;
+  getParkByState(state);
+  const tripName = form.querySelector(".trip").value;
+  const startDate = form.querySelector("#start").value;
+  const endDate = form.querySelector("#end").value;
+  tripList = [tripName, startDate, endDate];
+
+  //possibly where we send date data
+  // const date = form.querySelector( ... ).value;
+  // fetch(...) // send the request to the BE with the dates
+
+  return false;
+});
+
 const getParkByState = async (state) => {
   const getInfo = await fetch(
-    `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=fulAEa7kmQxxruUH93NX1dJp9KT8W7O1loEFHwly`
+    `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=m6434v3FtLw4YiOsDKpm5lq611cn54CHw1iRchdH`
   );
   const convertInfo = await getInfo.json();
   // convertInfo.data = convertInfo.data
@@ -79,23 +98,38 @@ const getParkByState = async (state) => {
     let moreInfoURL = convertInfo.data[i].url;
 
     itenerary.addEventListener("click", async function () {
-      const dataForDB = await fetch("http://localhost:3000/addToParksDB", {
+      const dataForParkDB = await fetch("http://localhost:3000/addToParksDB", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          parkNameForDB: convertInfo.data[i].fullName,
-          directionsforDB: convertInfo.data[i].directionsUrl,
-          additionalInfoDB: convertInfo.data[i].url,
+          parkName: convertInfo.data[i].fullName,
+          directionsURL: convertInfo.data[i].directionsUrl,
+          moreInfoURL: convertInfo.data[i].url,
+          tripName: tripList[0],
+          startDate: tripList[1],
+          endDate: tripList[2],
+        }),
+      });
+      const dataForTripDB = await fetch("http://localhost:3000/addToTripsDB", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tripName: tripList[0],
+          startDate: tripList[1],
+          endDate: tripList[2],
         }),
       });
       itenerary.className += "add";
       alert(
         "This park has been added to your itenerary! Good luck on your Explorations!"
       );
-      console.log(dataForDB);
+      console.log(dataForTripDB);
     });
     infoDiv.append(parkName, parkState, viewMore, itenerary);
     imgDiv.append(mainImg);
@@ -104,7 +138,6 @@ const getParkByState = async (state) => {
   }
 };
 
-let form = document.querySelector("form.fullSearch");
 let regionSelector = form.querySelector(".selectpicker");
 let stateSelector = form.querySelector(".selectState");
 let camp = form.querySelector("#camping");
@@ -119,23 +152,3 @@ regionSelector.addEventListener("change", (e) => {
       "<option value='" + state + "'>" + state + "</option>";
   });
 });
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const state = stateSelector.value;
-  getParkByState(state, camping);
-
-  //possibly where we send date data
-  // const date = form.querySelector( ... ).value;
-  // fetch(...) // send the request to the BE with the dates
-
-  return false;
-});
-
-//camping option
-// camp.addEventListener("click", (e) => {
-//     getParkByRegion(state,camping);
-//     console.log(camp)
-
-// });
