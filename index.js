@@ -32,19 +32,6 @@ app.use(cors());
 
 const PORT = 3000;
 
-// // creates entry into "Parks" method using data supplied. Can pull this data from a form on site.
-// app.post("/create", async (req, res) => {
-//   const { data, error } = await supabase.from("Parks").insert([
-//     {
-//       parkName: "Redwood Forest",
-//       directionsURL: "www.redwoods.com",
-//       moreInfoURL: "wwww.moreredwoodinfo.com",
-//       userId: 4,
-//     },
-//   ]);
-//   res.send("WORKED!");
-// });
-
 app.get("/register", (req, res) => {
   console.log(req.body);
   res.render("register");
@@ -68,13 +55,13 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/addToParksDB", async (req, res) => {
-  const { parkNameForDB, directionsforDB, additionalInfoDB } = req.body;
+  const { parkName, directionsURL, moreInfoURL } = req.body;
   const { data, error } = await supabase.from("Parks").insert([
     {
-      parkName: parkNameForDB,
-      directionsURL: directionsforDB,
-      moreInfoURL: additionalInfoDB,
-      userId: 3,
+      parkName: parkName,
+      directionsURL: directionsURL,
+      moreInfoURL: moreInfoURL,
+      userId: req.session.user.userId,
     },
   ]);
   console.log(data);
@@ -95,6 +82,9 @@ app.post("/login", async (req, res) => {
   if (data.length > 0) {
     bcrypt.compare(req.body.password, data[0].password, (error, result) => {
       if (result) {
+        if (req.session) {
+          req.session.user = { userId: data[0].id, username: data[0].username };
+        } else console.log("no session");
         res.redirect("explore");
       } else {
         res.render("login", { locals: { message: "Check Your Password" } });

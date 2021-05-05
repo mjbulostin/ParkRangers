@@ -29,7 +29,7 @@ const statesByRegion = {
 
 const getParkByState = async (state) => {
   const getInfo = await fetch(
-    `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=fulAEa7kmQxxruUH93NX1dJp9KT8W7O1loEFHwly`
+    `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=m6434v3FtLw4YiOsDKpm5lq611cn54CHw1iRchdH`
   );
   const convertInfo = await getInfo.json();
   // convertInfo.data = convertInfo.data
@@ -86,9 +86,9 @@ const getParkByState = async (state) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          parkNameForDB: convertInfo.data[i].fullName,
-          directionsforDB: convertInfo.data[i].directionsUrl,
-          additionalInfoDB: convertInfo.data[i].url,
+          parkName: convertInfo.data[i].fullName,
+          directionsURL: convertInfo.data[i].directionsUrl,
+          moreInfoURL: convertInfo.data[i].url,
         }),
       });
       itenerary.className += "add";
