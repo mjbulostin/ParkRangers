@@ -5,23 +5,17 @@ body {
 }
 nav {
   text-decoration: none;
-  display: flex;
-  align-items: center;
   height: 50px;
   padding-top: 25px;
 }
-nav a {
-  font-size: larger;
-  font-weight: bold;
-  letter-spacing: 1px;
-  justify-content: space-between;
+a {
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  color: black;
 }
 nav a:hover {
-  text-shadow: 2px 2px 4px rgb(57, 8, 85);
-}
-.links,
-.profileLinks {
-  padding-left: 25%;
+    color: black;
+    text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
 .login-container {
   justify-content: center;
@@ -46,9 +40,4 @@ input {
 }
 h1 {
   font-family: "Open Sans", sans-serif;
-}
-a {
-  font-family: "Open Sans", sans-serif;
-  text-decoration: none;
-  color: black;
 }
