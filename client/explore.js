@@ -78,11 +78,18 @@ const getParkByState = async (state) => {
     itenerary.className = "addProfile";
     let moreInfoURL = convertInfo.data[i].url;
 
-    itenerary.addEventListener("click", function () {
-      dataForDB.push({
-        parkNameForDB: convertInfo.data[i].fullName,
-        directionsforDB: convertInfo.data[i].directionsUrl,
-        additionalInfoDB: convertInfo.data[i].url,
+    itenerary.addEventListener("click", async function () {
+      const dataForDB = await fetch("http://localhost:3000/addToParksDB", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          parkNameForDB: convertInfo.data[i].fullName,
+          directionsforDB: convertInfo.data[i].directionsUrl,
+          additionalInfoDB: convertInfo.data[i].url,
+        }),
       });
       itenerary.className += "add";
       alert(
