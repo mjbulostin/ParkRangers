@@ -19,14 +19,14 @@
         <div class="regionContainer">
           <div class="row-fluid">
             <h2>Choose a region to Explore</h2>
-            <!-- <label for="selectpicker">Choose a Region to Explore </label> -->
             <select
               class="selectpicker"
               data-show-subtext="False"
               data-live-search="true"
               aria-placeholder="Regions"
+              required
             >
-              <!-- <option value="selectOne" data-subtext="Region">Regions</option> -->
+              <option value="" data-subtext="Region">Regions</option>
               <option value="northeast" data-subtext="Region">Northeast</option>
               <option value="west" data-subtext="Region">West</option>
               <option value="midwest" data-subtext="Region">Midwest</option>
@@ -34,7 +34,7 @@
               <option value="southeast" data-subtext="Region">Southeast</option>
             </select>
             <h2>
-              Three questions in, Hows your state of mind? Ooops we meant...
+              Three questions in, hows your state of mind? Ooops we meant...
               Have a state in mind?
             </h2>
             <select
@@ -42,39 +42,38 @@
               data-show-subtext="False"
               data-live-search="true"
               aria-placeholder="state"
+              required
             >
-              <option value="northeast" data-subtext="Region">Northeast</option>
+              <option value="">States</option>
             </select>
 
             <h2>Will you be camping?</h2>
             <label for="camping"> YEAH! Outdoors are my jam! </label>
-            <input type="radio" name="camping" />
+            <input type="radio" name="camping" id="camping" />
             <label for="nocamp">NO! Ewww bugs! </label>
-            <input type="radio" name="nocamp" />
+            <input type="radio" name="camping" />
             <!-- <button id="camping">TENT ACCESS</button> -->
-            <form class="dates" method="post">
-              <h2>When are you going?</h2>
-              <label for="start">Exploration Kick Off: </label>
 
-              <input
-                type="date"
-                id="start"
-                name="trip-start"
-                value="2018-07-22"
-                min="2021-01-01"
-                max="2022-12-31"
-              />
+            <h2>When are you going?</h2>
+            <label for="start">Exploration Kick Off: </label>
 
-              <label for="end">Headed Home: </label>
-              <input
-                type="date"
-                id="end"
-                name="trip-start"
-                value="2018-07-22"
-                min="2021-01-01"
-                max="2022-12-31"
-              />
-            </form>
+            <input
+              type="date"
+              id="start"
+              name="trip-start"
+              min="2021-05-01"
+              max="2022-12-31"
+            />
+
+            <label for="end">Headed Home: </label>
+            <input
+              type="date"
+              id="end"
+              name="trip-end"
+              min="2021-05-01"
+              max="2022-12-31"
+            />
+            <button type="submit" class="formSubmit">EXPLORE</button>
           </div>
         </div>
       </form>
