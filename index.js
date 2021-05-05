@@ -10,6 +10,7 @@ app.use(
     extended: true,
   })
 );
+const cors = require("cors");
 
 const path = require("path");
 const bcrypt = require("bcrypt");
@@ -26,6 +27,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+app.use(cors());
 
 const PORT = 3000;
 
@@ -64,12 +67,27 @@ app.post("/register", async (req, res) => {
   res.redirect("explore");
 });
 
+app.post("/addToParksDB", async (req, res) => {
+  const { parkNameForDB, directionsforDB, additionalInfoDB } = req.body;
+  const { data, error } = await supabase.from("Parks").insert([
+    {
+      parkName: parkNameForDB,
+      directionsURL: directionsforDB,
+      moreInfoURL: additionalInfoDB,
+      userId: 3,
+    },
+  ]);
+  console.log(data);
+  res.send("WORKS~!");
+});
+
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
 app.post("/login", async (req, res) => {
   let username = req.body.username;
-  let password = req.body.password;
+  let password = req.body.password; //delete later if not scared
   const { data, error } = await supabase
     .from("Users")
     .select()
