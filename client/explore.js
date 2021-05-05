@@ -19,7 +19,15 @@ const getParkByRegion = async (region) => {
     `https://developer.nps.gov/api/v1/parks?stateCode=${states.join(",")},ID&api_key=fulAEa7kmQxxruUH93NX1dJp9KT8W7O1loEFHwly`
     );
     const convertInfo = await getInfo.json();
-     
+    // convertInfo.data = convertInfo.data
+    // .filter((d) => {
+    //   if (camping) {
+    //     return d.activities.find((a) => a.name === camping);
+    //   }
+    //     true
+    // }); 
+    parkList.innerHTML = "";
+
     for (let i = 0; i < convertInfo.data.length; i++) {
         let parkContainer = document.createElement("div");
         parkContainer.className = `container-sm`;
@@ -47,7 +55,7 @@ const getParkByRegion = async (region) => {
         itenerary.addEventListener("click", function () {
           favorites.push(convertInfo.data[i].id);
           itenerary.className += "add";
-          alert("This park has been added to your favorites! Good luck on your Explorations!");
+          alert("This park has been added to your itenerary! Good luck on your Explorations!");
         })
       infoDiv.append(parkName, parkState, parkInfo, itenerary);
       imgDiv.append(mainImg);
@@ -62,5 +70,13 @@ selector.addEventListener("change", (e) => {
     getParkByRegion(region);
 
 });
+
+// let camp = document.querySelector("#camping");
+// camp.addEventListener("click", (e) => {  
+//     // const region = e.target.value;
+//     getParkByRegion(camping);
+
+// });
+
 
 

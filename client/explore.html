@@ -4,43 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> -->
+
+    <link
+      rel="stylesheet"
+      href="https://formden.com/static/cdn/bootstrap-iso.css"
+    />
     <title>Explore</title>
   </head>
   <body>
     <div class="main">
-      <label for="regions"></label>
-      <div class="regionContainer">
-        <div class="row-fluid">
-          <label for="selectpicker">Choose a Region to Explore</label>
-          <select class="selectpicker" data-show-subtext="False" data-live-search="true">
-            <option value="selectOne" data-subtext="Region">Regions</option>
-            <option value="northeast" data-subtext="Region">Northeast</option>
-            <option value="west"data-subtext="Region">West</option>
-            <option value="midwest"data-subtext="Region">Midwest</option>
-            <option value="southwest"data-subtext="Region">Southwest</option>
-            <option value="southeast"data-subtext="Region">Southeast</option>
-          </select>
-          <form class="dates" method="post"></form>
-            <label for="start">Start Date:</label>
+      <form class="fullSearch">
+        <h1>Hey Explorer, can you answer a few questions for me?</h1>
+        <label for="regions"></label>
+        <div class="regionContainer">
+          <div class="row-fluid">
+            <h2>Choose a region to Explore</h2>
+            <!-- <label for="selectpicker">Choose a Region to Explore </label> -->
+            <select
+              class="selectpicker"
+              data-show-subtext="False"
+              data-live-search="true"
+              aria-placeholder="Regions"
+            >
+              <!-- <option value="selectOne" data-subtext="Region">Regions</option> -->
+              <option value="northeast" data-subtext="Region">Northeast</option>
+              <option value="west" data-subtext="Region">West</option>
+              <option value="midwest" data-subtext="Region">Midwest</option>
+              <option value="southwest" data-subtext="Region">Southwest</option>
+              <option value="southeast" data-subtext="Region">Southeast</option>
+            </select>
+            <h2>
+              Three questions in, Hows your state of mind? Ooops we meant...
+              Have a state in mind?
+            </h2>
+            <select
+              class="selectState"
+              data-show-subtext="False"
+              data-live-search="true"
+              aria-placeholder="state"
+            >
+              <option value="northeast" data-subtext="Region">Northeast</option>
+            </select>
 
-            <input type="date" id="start" name="trip-start"
-            value="2018-07-22"
-            min="2021-01-01" max="2022-12-31">
-            
-            <label for="start">End Date:</label>
-            <input type="date" id="end" name="trip-start"
-            value="2018-07-22"
-            min="2021-01-01" max="2022-12-31">
+            <h2>Will you be camping?</h2>
+            <label for="camping"> YEAH! Outdoors are my jam! </label>
+            <input type="radio" name="camping" />
+            <label for="nocamp">NO! Ewww bugs! </label>
+            <input type="radio" name="nocamp" />
+            <!-- <button id="camping">TENT ACCESS</button> -->
+            <form class="dates" method="post">
+              <h2>When are you going?</h2>
+              <label for="start">Exploration Kick Off: </label>
+
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                value="2018-07-22"
+                min="2021-01-01"
+                max="2022-12-31"
+              />
+
+              <label for="end">Headed Home: </label>
+              <input
+                type="date"
+                id="end"
+                name="trip-start"
+                value="2018-07-22"
+                min="2021-01-01"
+                max="2022-12-31"
+              />
+            </form>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-    </html>
+  </body>
 
-  </body>>
-  
   <script src="explore.js"></script>
-
 </html>
