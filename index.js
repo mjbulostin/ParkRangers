@@ -29,6 +29,7 @@ app.use(
 );
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "/client")));
 
 const PORT = 3000;
 
@@ -84,7 +85,7 @@ app.post("/login", async (req, res) => {
       if (result) {
         if (req.session) {
           req.session.user = { userId: data[0].id, username: data[0].username };
-        } else console.log("no session");
+        } else res.redirect("login");
         res.redirect("explore");
       } else {
         res.render("login", { locals: { message: "Check Your Password" } });
