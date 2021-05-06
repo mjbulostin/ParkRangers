@@ -127,6 +127,16 @@ app.get("/explore", (req, res) => {
 //   res.send("GOT THE DATA!");
 // });
 
+app.get("/gettrips", async (req, res) => {
+  const userId = req.session.user.userId;
+  const { data, error } = await supabase
+    .from("Trips")
+    .select()
+    .match({ userId: userId });
+  console.log(data);
+  res.send("GOT THE DATA!");
+});
+
 // // finds User named "Bob" and updates their name to "New Zealand". Can match with any of the column names (id, lastName, etc).
 // app.post("/updatedata", async (req, res) => {
 //   const { data, error } = await supabase
