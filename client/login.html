@@ -13,25 +13,24 @@
   <body>
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="#">
           <img src="assets/logo.png" alt="" width="180px" height="80px"  class="d-inline-block align-text-top" href="/">
         </a>
         <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" href="/explore">Explore</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/view-all-trips">View Trips</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-        </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="/explore">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view-all-trips">View Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+      </ul>
   </nav>
-  <!-- <div class="login-container"></div> -->
     <div class="bg-image d-flex align-items-center" style="background-image: url('assets/background1.png'); height: 100vh; background-repeat: no-repeat; background-size: contain;">
     <!-- <form name="form" action="/login" onsubmit="return validateForm()" method="post">
     </form> -->
@@ -50,6 +49,8 @@
       </div>
       <button type="submit" class="btn btn-outline-warning btn-lg">Login</button>
       <h4>${message}</h4>
+      <br>
+      <a id="loginLink" href="/login">Create an Account Here</a>
     </form>
   </div>
   </div>
