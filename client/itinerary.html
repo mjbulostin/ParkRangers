@@ -18,14 +18,17 @@
           ${trips.map(trip =>`
           <h3>Park Name: ${trip.Parks.parkName}</h3>
           <form action="/delete-park/${trip.Parks.id}" method="POST">
-            <input type="hidden" name="parkId" value="${trip.Parks.id}" />"
+            <input type="hidden" name="parkId" value="${trip.Parks.id}" />
             <button type="submit">Delete From Trip</button>
           </form>
           `).join("")} <br />
         </div>
-        <button type="button">Edit Trip</button>
-        <button type="button">Delete Trip</button>
+        <form action="/delete-trip/${tripName}" method="POST">
+          <input type="hidden" name="tripName" value="${tripName}" />
+          <button type="submit">Delete Trip</button>
+        </form>
 
+        <button type="button">Edit Trip</button>
         `).join("")}
       </div>
     </div>

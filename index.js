@@ -161,15 +161,6 @@ app.get("/view-all-trips", async (req, res) => {
 //   res.send("CHANGED!");
 // });
 
-// // deletes data from "Parks" table with the name of "Yellowstone"
-// app.post("/deletedata", async (req, res) => {
-//   const { data, error } = await supabase
-//     .from("Parks")
-//     .delete()
-//     .match({ parkName: "Yellowstone" });
-//   res.send("GONE!");
-// });
-
 app.post("/delete-park/:id", async (req, res) => {
   const { id } = req.params;
   console.log(req.params);
@@ -177,6 +168,16 @@ app.post("/delete-park/:id", async (req, res) => {
     .from("Trips")
     .delete()
     .match({ parkId: Number(id) });
+  res.redirect("/view-all-trips");
+});
+
+app.post("/delete-trip/:tripName", async (req, res) => {
+  const { tripName } = req.params;
+  console.log(req.params);
+  const { data, error } = await supabase
+    .from("Trips")
+    .delete()
+    .match({ tripName: tripName });
   res.redirect("/view-all-trips");
 });
 
