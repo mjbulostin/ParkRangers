@@ -11,31 +11,25 @@
     <link rel="stylesheet" href="views/loginStyles.css">
   </head>
   <body>
-  <nav class="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="assets/logo.png" alt="" width="180px" height="80px" class="d-inline-block align-text-top">
-      </a>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/explore">Explore</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/itinerary">Itinerary</a>
-        </li>
-      </ul>
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-      </ul>
-    </div>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo.png" alt="" width="180px" height="80px"  class="d-inline-block align-text-top" href="/">
+        </a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="/explore">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/itinerary">Itinerary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
   </nav>
   <div class="login-container"></div>
     <div class="bg-image d-flex align-items-center" style="background-image: url('assets/background1.png'); height: 100vh; background-repeat: no-repeat; background-size: contain;">
@@ -53,6 +47,8 @@
         <label for="floatingPassword">Password</label>
       </div>
       <button type="button" class="btn btn-outline-warning btn-lg">Enter</button>
+      <br>
+      <a id="loginLink" href="/login">Create an Account Here</a>
     </form>
   </div>
   </div>
