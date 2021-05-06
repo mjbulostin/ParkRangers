@@ -13,11 +13,11 @@ As a user, I want to explore my options for my upcoming trip. The information av
 ---
 
 ## Team members:
-Jessica Haugen https://github.com/Jessicahaugen
-Taylor Lightbourne https://github.com/taylorlightbourne
-Patrick Groves https://github.com/pgroves95
-Whitney Svoboda https://github.com/wsvoboda
-Michael Bulostin https://github.com/mjbulostin
+* Jessica Haugen https://github.com/Jessicahaugen
+* Taylor Lightbourne https://github.com/taylorlightbourne
+* Patrick Groves https://github.com/pgroves95
+* Whitney Svoboda https://github.com/wsvoboda
+* Michael Bulostin https://github.com/mjbulostin
 
 ---
 
