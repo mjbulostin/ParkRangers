@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 app.engine("html", es6Renderer);
-app.set("views", "client"); // will set when there is a folder to connect to
-app.set("view engine", "html"); // will set when there is a folder to connect to
+app.set("views", "client");
+app.set("view engine", "html");
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -58,7 +58,7 @@ app.post("/register", async (req, res) => {
     },
   ]);
   console.log("REGISTERED");
-  res.redirect("explore");
+  res.redirect("/explore");
 });
 
 app.post("/addToParksDB", async (req, res) => {
