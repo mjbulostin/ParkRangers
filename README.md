@@ -13,7 +13,7 @@ As a user, I want to explore my options for my upcoming trip. The information av
 * Whitney Svoboda https://github.com/wsvoboda
 * Michael Bulostin https://github.com/mjbulostin
 
-### Database diagram with associations:
+### Database table diagram with associations:
 
 ![Screen Shot 2021-05-04 at 11 54 00 AM](https://user-images.githubusercontent.com/56733715/117348307-0cdc3a00-ae78-11eb-8317-3b8ba0c1655a.png)
 
