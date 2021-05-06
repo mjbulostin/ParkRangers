@@ -6,7 +6,6 @@ nav {
   text-decoration: none;
   height: 100px;
   padding-top: 25px;
-
 }
 a {
   font-family: "Open Sans", sans-serif;
@@ -17,29 +16,39 @@ nav a:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
-h1 {
-  font-family: "Open Sans", sans-serif;
-  color: #ffbe0b;
-}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   margin-left: 180px;
 }
 button {
   margin-top: 10%;
+  border-color: #5c4d7d;
 }
-.form-control{
-  border-width: 2px; 
-  border-color: #ffbe0b;
+.form-control {
+  border-width: 2px;
+  border-color: #5c4d7d;
   background-color: #5a189a;
   opacity: 10%;
   width: 100%;
-
-}   
-input, label {
+  border-radius: 10%;
+}
+input,
+label {
   font-family: "Open Sans", sans-serif;
-  color: #ffbe0b;
+  color: #5c4d7d;
+}
+#registerLink {
+  font-size: smaller;
+}
+#registerLink:hover {
+  color: black;
+  text-shadow: 2px 2px 4px rgb(57, 8, 85);
+
+}
+input {
+  color: black;
 }

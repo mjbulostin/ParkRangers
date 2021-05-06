@@ -35,6 +35,10 @@ let parkIdGlobal = "";
 
 const PORT = 3000;
 
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
 app.get("/register", (req, res) => {
   console.log(req.body);
   res.render("register");
@@ -90,7 +94,7 @@ app.post("/addToTripsDB", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { locals: { message: "" } });
 });
 
 app.post("/login", async (req, res) => {
@@ -108,7 +112,9 @@ app.post("/login", async (req, res) => {
         } else res.redirect("login");
         res.redirect("explore");
       } else {
-        res.render("login", { locals: { message: "Check Your Password" } });
+        res.render("login", {
+          locals: { message: "Invalid username or password" },
+        });
       }
     });
   } else {
@@ -117,58 +123,80 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/explore", (req, res) => {
-  res.render("explore");
+  if (req.session.user) {
+    res.render("explore");
+  } else {
+    res.render("login", {
+      locals: { message: "Please log in to explore parks" },
+    });
+  }
 });
-
-// Pulls all data from "Users" table. Console logging to ensure data is pulled correctly.
-// app.get("/getdata", async (req, res) => {
-//   const { data, error } = await supabase.from("Users").select();
-//   console.log(data);
-//   res.send("GOT THE DATA!");
-// });
 
 app.get("/view-all-trips", async (req, res) => {
-  const userId = req.session.user.userId;
-  const { data, error } = await supabase
-    .from("Trips")
-    .select(
-      `
+  if (req.session.user) {
+    const userId = req.session.user.userId;
+    const { data, error } = await supabase
+      .from("Trips")
+      .select(
+        `
     tripName, startDate, endDate,
-    Parks:parkId ( parkName )
+    Parks:parkId ( parkName, id )
   `
-    )
-    .match({ userId: userId });
-  const objectOfTrips = {};
-  data.forEach((trip) => {
-    if (Object.keys(objectOfTrips).includes(trip.tripName)) {
-      objectOfTrips[trip.tripName].push(trip);
-    } else {
-      objectOfTrips[trip.tripName] = [];
-      objectOfTrips[trip.tripName].push(trip);
-    }
-  });
-  res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
+      )
+      .match({ userId: userId })
+      .order("id", { ascending: true });
+    const objectOfTrips = {};
+    data.forEach((trip) => {
+      if (Object.keys(objectOfTrips).includes(trip.tripName)) {
+        objectOfTrips[trip.tripName].push(trip);
+      } else {
+        objectOfTrips[trip.tripName] = [];
+        objectOfTrips[trip.tripName].push(trip);
+      }
+    });
+    res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
+  } else {
+    res.render("login", {
+      locals: { message: "Please log in to view your trips" },
+    });
+  }
 });
 
-// // finds User named "Bob" and updates their name to "New Zealand". Can match with any of the column names (id, lastName, etc).
-// app.post("/updatedata", async (req, res) => {
-//   const { data, error } = await supabase
-//     .from("Users")
-//     .update({ firstName: "New Zealand" })
-//     .match({ firstName: "Bob" });
-//   console.log(data);
-//   res.send("CHANGED!");
-// });
+app.post("/edit-trip/:tripName", async (req, res) => {
+  const { tripName } = req.params;
+  const newTripName = req.body.newTripName;
+  const newStartDate = req.body.newStartDate;
+  const newEndDate = req.body.newEndDate;
+  const { data, error } = await supabase
+    .from("Trips")
+    .update({ tripName: newTripName,
+    startDate: newStartDate,
+    endDate: newEndDate
+     })
+    .match({ tripName: tripName });
+  res.redirect("/view-all-trips");
+});
 
-// // deletes data from "Parks" table with the name of "Yellowstone"
-// app.post("/deletedata", async (req, res) => {
-//   const { data, error } = await supabase
-//     .from("Parks")
-//     .delete()
-//     .match({ parkName: "Yellowstone" });
-//   res.send("GONE!");
-// });
+app.post("/delete-trip/:tripName", async (req, res) => {
+  const { tripName } = req.params;
+  console.log(req.params);
+  const { data, error } = await supabase
+    .from("Trips")
+    .delete()
+    .match({ tripName: tripName });
+  res.redirect("/view-all-trips");
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on localhost:${PORT}`);
+});
+
+app.post("/delete-park/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.params);
+  const { data, error } = await supabase
+    .from("Trips")
+    .delete()
+    .match({ parkId: Number(id) });
+  res.redirect("/view-all-trips");
 });
