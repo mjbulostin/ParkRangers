@@ -9,13 +9,16 @@
   <body>
     <div class="main-container">
       <div class="trip-container">
-        ${Object.entries(objectOfTrips).map(trip => `
+        ${Object.entries(objectOfTrips).map(([tripName,trips]) => `
+        <h3>${tripName}</h3>
+        <h4>Start Date: ${trips[0].startDate}</h4>
+        <h4>End Date: ${trips[0].endDate}</h4>
         <div class="small-trip-card">
-          <h2>${trip[0]}</h2>
-          <h2>${trip[1]}</h2>
+          ${trips.map(trip =>`
+          <h3>Park Name: ${trip.Parks.parkName}</h3>
+          `).join("")}
         </div>
         `).join("")}
-        <!-- <p>${objectOfTrips.BestiesTrip[0].tripName}</p> -->
       </div>
     </div>
   </body>

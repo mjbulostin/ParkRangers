@@ -131,7 +131,12 @@ app.get("/gettrips", async (req, res) => {
   const userId = req.session.user.userId;
   const { data, error } = await supabase
     .from("Trips")
-    .select()
+    .select(
+      `
+    tripName, startDate, endDate,
+    Parks:parkId ( parkName )
+  `
+    )
     .match({ userId: userId });
   const objectOfTrips = {};
   data.forEach((trip) => {
@@ -142,7 +147,6 @@ app.get("/gettrips", async (req, res) => {
       objectOfTrips[trip.tripName].push(trip);
     }
   });
-  console.log(objectOfTrips);
   res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
 });
 
