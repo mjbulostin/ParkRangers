@@ -5,12 +5,10 @@
 # Full-stack project
 ## brought to you by DigitalCrafts Bootcamp team Park Rangers
 
----
 
-User story:
+# User story:
 As a user, I want to explore my options for my upcoming trip. The information available to me on the internet is scattered and I don't know what to choose. I want a place to streamline my decision to choose national parks, lodging, and other recommendations based on location, dates of the trip, and activity preferences.
 
----
 
 ## Team members:
 * Jessica Haugen https://github.com/Jessicahaugen
@@ -19,15 +17,11 @@ As a user, I want to explore my options for my upcoming trip. The information av
 * Whitney Svoboda https://github.com/wsvoboda
 * Michael Bulostin https://github.com/mjbulostin
 
----
-
-Database diagram with associations:
+### Database diagram with associations:
 
 ![Screen Shot 2021-05-04 at 11 54 00 AM](https://user-images.githubusercontent.com/56733715/117348307-0cdc3a00-ae78-11eb-8317-3b8ba0c1655a.png)
 
----
-
-Wireframe sketching:
+### Wireframe sketching:
 
 ![Screen Shot 2021-05-06 at 11 43 03 AM](https://user-images.githubusercontent.com/56733715/117348813-ab689b00-ae78-11eb-92ad-33a51affd96a.png)
 
@@ -39,9 +33,7 @@ Wireframe sketching:
 
 ![Screen Shot 2021-05-06 at 11 44 19 AM](https://user-images.githubusercontent.com/56733715/117348876-c0ddc500-ae78-11eb-8b1d-d4a233d75355.png)
 
----
-
-# Collection of visual screenshots of the project:
+### Collection of visual screenshots of the project:
 
 ![Screen Shot 2021-05-06 at 2 08 33 PM](https://user-images.githubusercontent.com/56733715/117348172-e6b69a00-ae77-11eb-8751-cab9df580870.png)
 
@@ -49,9 +41,8 @@ Wireframe sketching:
 
 ![Screen Shot 2021-05-06 at 12 17 59 PM](https://user-images.githubusercontent.com/56733715/117348980-dd79fd00-ae78-11eb-812d-d229df6f55a9.png)
 
----
 
-# Back-end:
+### Back-end:
 * Node.js
 * JavaScript
 * PostgreSQL database: Supabase
@@ -65,7 +56,7 @@ Wireframe sketching:
 
 ---
 
-# Front-end:
+### Front-end:
 * HTML & External CSS
 * Bootstrap elements
 * Media queries
@@ -73,17 +64,17 @@ Wireframe sketching:
 
 ---
 
-# Learnings & challenges:
+### Learnings & challenges:
 * Lorem ipsum
 * Lorem ipsum
 
-# Successes:
+### Successes:
 * Lorem ipsum
 * Lorem ipsum
 
 ---
 
-# Ideas for future iterations with additions to functionality and content:
+### Ideas for future iterations with additions to functionality and content:
 * Profile page shows the itinerary history
 * The ability to rate your own trip
 * The ability to add pictures from your trip to a gallery
