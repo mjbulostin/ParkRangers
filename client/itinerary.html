@@ -4,23 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./views/itinerary.css" />
     <title>Itenerary</title>
   </head>
   <body>
     <div class="main-container">
+      ${Object.entries(objectOfTrips).map(([tripName,trips]) => `
       <div class="trip-container">
-        ${Object.entries(objectOfTrips).map(([tripName,trips]) => `
         <h3>${tripName}</h3>
         <h4>Start Date: ${trips[0].startDate}</h4>
         <h4>End Date: ${trips[0].endDate}</h4>
         <div class="small-trip-card">
           ${trips.map(trip =>`
           <h3>Park Name: ${trip.Parks.parkName}</h3>
-          <button type="button">Delete From Trip</button>
-          `).join("")} <br>
-          <button type="button">Edit Trip</button>
-          <button type="button">Delete Trip</button>
+          <form action="/delete-park/${trip.Parks.id}" method="POST">
+            <input type="hidden" name="parkId" value="${trip.Parks.id}" />"
+            <button type="submit">Delete From Trip</button>
+          </form>
+          `).join("")} <br />
         </div>
+        <button type="button">Edit Trip</button>
+        <button type="button">Delete Trip</button>
+
         `).join("")}
       </div>
     </div>

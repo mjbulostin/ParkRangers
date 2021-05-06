@@ -134,10 +134,11 @@ app.get("/view-all-trips", async (req, res) => {
     .select(
       `
     tripName, startDate, endDate,
-    Parks:parkId ( parkName )
+    Parks:parkId ( parkName, id )
   `
     )
     .match({ userId: userId });
+  console.log(data);
   const objectOfTrips = {};
   data.forEach((trip) => {
     if (Object.keys(objectOfTrips).includes(trip.tripName)) {
@@ -168,6 +169,16 @@ app.get("/view-all-trips", async (req, res) => {
 //     .match({ parkName: "Yellowstone" });
 //   res.send("GONE!");
 // });
+
+app.post("/delete-park/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.params);
+  const { data, error } = await supabase
+    .from("Trips")
+    .delete()
+    .match({ parkId: Number(id) });
+  res.redirect("/view-all-trips");
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on localhost:${PORT}`);
