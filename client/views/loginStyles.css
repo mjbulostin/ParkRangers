@@ -17,10 +17,7 @@ nav a:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
-h1 {
-  font-family: "Open Sans", sans-serif;
-  color: #ffbe0b;
-}
+
 form {
   display: flex;
   flex-direction: column;
@@ -37,9 +34,17 @@ button {
   background-color: #5a189a;
   opacity: 10%;
   width: 100%;
-
+  border-radius: 10%;
 }   
 input, label {
   font-family: "Open Sans", sans-serif;
   color: #ffbe0b;
+}
+#loginLink {
+  font-size: smaller;
+}
+#loginLink:hover {
+  color: black;
+  text-shadow: 2px 2px 4px rgb(57, 8, 85);
+
 }
