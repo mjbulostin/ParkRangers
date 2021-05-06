@@ -70,7 +70,7 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ---
 
-### Ideas for future iterations with additions to functionality and content:
+### Future iteration ideas w/ additions to functionality & content:
 * Profile page shows the itinerary history
 * The ability to rate your own trip
 * The ability to add pictures from your trip to a gallery
