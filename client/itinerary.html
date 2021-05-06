@@ -40,15 +40,15 @@
         <h3>${tripName}</h3>
         <h4>Start Date: ${trips[0].startDate}</h4>
         <h4>End Date: ${trips[0].endDate}</h4>
-        <div class="small-trip-card">
-          ${trips.map(trip =>`
+        
+          ${trips.map(trip =>`<div class="small-trip-card">
           <h3>Park Name: ${trip.Parks.parkName}</h3>
           <form action="/delete-park/${trip.Parks.id}" method="POST">
             <input type="hidden" name="parkId" value="${trip.Parks.id}" />
             <button type="submit">Delete From Trip</button>
-          </form>
+          </form></div>
           `).join("")} <br />
-        </div>
+        
         <form action="/delete-trip/${tripName}" method="POST">
           <button type="submit">Delete Trip</button>
         </form>
