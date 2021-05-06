@@ -120,13 +120,6 @@ app.get("/explore", (req, res) => {
   res.render("explore");
 });
 
-// Pulls all data from "Users" table. Console logging to ensure data is pulled correctly.
-// app.get("/getdata", async (req, res) => {
-//   const { data, error } = await supabase.from("Users").select();
-//   console.log(data);
-//   res.send("GOT THE DATA!");
-// });
-
 app.get("/view-all-trips", async (req, res) => {
   const userId = req.session.user.userId;
   const { data, error } = await supabase
@@ -137,8 +130,8 @@ app.get("/view-all-trips", async (req, res) => {
     Parks:parkId ( parkName, id )
   `
     )
-    .match({ userId: userId });
-  console.log(data);
+    .match({ userId: userId })
+    .order("id", { ascending: true });
   const objectOfTrips = {};
   data.forEach((trip) => {
     if (Object.keys(objectOfTrips).includes(trip.tripName)) {
@@ -151,15 +144,15 @@ app.get("/view-all-trips", async (req, res) => {
   res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
 });
 
-// // finds User named "Bob" and updates their name to "New Zealand". Can match with any of the column names (id, lastName, etc).
-// app.post("/updatedata", async (req, res) => {
-//   const { data, error } = await supabase
-//     .from("Users")
-//     .update({ firstName: "New Zealand" })
-//     .match({ firstName: "Bob" });
-//   console.log(data);
-//   res.send("CHANGED!");
-// });
+app.post("/edit-trip/:tripName", async (req, res) => {
+  const { tripName } = req.params;
+  const newTripName = req.body.newTripName;
+  const { data, error } = await supabase
+    .from("Trips")
+    .update({ tripName: newTripName })
+    .match({ tripName: tripName });
+  res.redirect("/view-all-trips");
+});
 
 app.post("/delete-park/:id", async (req, res) => {
   const { id } = req.params;
