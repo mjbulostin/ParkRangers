@@ -41,7 +41,7 @@ As a user, I want to explore my options for my upcoming trip. The information av
 ### Back-end:
 * Node.js
 * JavaScript
-* PostgreSQL database: Supabase
+* PostgreSQL database (Supabase)
 * RESTful API
 * API reference: https://www.nps.gov/subjects/developer/api-documentation.htm
 * Express package
