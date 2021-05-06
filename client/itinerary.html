@@ -40,34 +40,48 @@
         <h3>${tripName}</h3>
         <h4>Start Date: ${trips[0].startDate}</h4>
         <h4>End Date: ${trips[0].endDate}</h4>
-        <div class="small-trip-card">
-          ${trips.map(trip =>`
+        ${trips.map(trip =>`
+          <div class="small-trip-card">
           <h3>Park Name: ${trip.Parks.parkName}</h3>
           <form action="/delete-park/${trip.Parks.id}" method="POST">
             <input type="hidden" name="parkId" value="${trip.Parks.id}" />
             <button type="submit">Delete From Trip</button>
           </form>
-          `).join("")} <br />
         </div>
+          `).join("")} <br />
         <form action="/delete-trip/${tripName}" method="POST">
           <button type="submit">Delete Trip</button>
         </form>
-        <form action="/edit-trip/${tripName}" method="POST" id="editForm">
+        <form action="/edit-trip/${tripName}" method="POST" class="editForm">
           <input
             style="display: none"
             type="hidden"
             name="tripName"
             value="${tripName}"
           />
-          <button type="button" onclick="displayInput()">Edit Trip</button>
+          <button type="button" onclick="displayInput(this)">Edit Trip</button>
           <input
             type="text"
-            id="new-name"
+            class="new-name"
             name="newTripName"
             value="${tripName}"
             style="display: none"
           />
-          <button type="submit" id="edit-trip-button" style="display: none">
+          <input
+            type="date"
+            class="new-start-date"
+            name="newStartDate"
+            value="${trips[0].startDate}"
+            style="display: none"
+          />
+          <input
+            type="date"
+            class="new-end-date"
+            name="newEndDate"
+            value="${trips[0].endDate}"
+            style="display: none"
+          />
+          <button type="submit" class="edit-trip-button" style="display: none">
             Submit Changes
           </button>
         </form>
@@ -76,16 +90,24 @@
     </div>
   </body>
   <script>
-    const displayInput = () => {
-      const editButton = document.querySelector("#edit-trip-button");
-      const inputField = document.querySelector("#new-name");
-      const editForm = document.querySelector("#editForm");
+    const displayInput = (target) => {
+      const editForm = target.parentNode;
+      const editButton = editForm.querySelector(".edit-trip-button");
+      const inputField = editForm.querySelector(".new-name");
+      const newStart = editForm.querySelector(".new-start-date");
+      const newEnd = editForm.querySelector(".new-end-date");
+
       if (inputField.style.display === "none") {
         inputField.style.display = "block";
         editButton.style.display = "block";
+        newStart.style.display = "block";
+        newEnd.style.display = "block";
+
       } else {
         inputField.style.display = "none";
         editButton.style.display = "none";
+        newStart.style.display = "none";
+        newEnd.style.display = "none";
       }
     };
   </script>
