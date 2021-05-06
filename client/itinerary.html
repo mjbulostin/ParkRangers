@@ -6,5 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Itenerary</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main-container">
+      <div class="trip-container">
+        ${Object.entries(objectOfTrips).map(([tripName,trips]) => `
+        <h3>${tripName}</h3>
+        <h4>Start Date: ${trips[0].startDate}</h4>
+        <h4>End Date: ${trips[0].endDate}</h4>
+        <div class="small-trip-card">
+          ${trips.map(trip =>`
+          <h3>Park Name: ${trip.Parks.parkName}</h3>
+          `).join("")}
+        </div>
+        `).join("")}
+      </div>
+    </div>
+  </body>
 </html>
