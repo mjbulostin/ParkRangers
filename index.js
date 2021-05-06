@@ -127,7 +127,7 @@ app.get("/explore", (req, res) => {
 //   res.send("GOT THE DATA!");
 // });
 
-app.get("/gettrips", async (req, res) => {
+app.get("/itinerary", async (req, res) => {
   const userId = req.session.user.userId;
   const { data, error } = await supabase
     .from("Trips")
