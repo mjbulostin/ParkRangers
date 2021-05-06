@@ -133,7 +133,17 @@ app.get("/gettrips", async (req, res) => {
     .from("Trips")
     .select()
     .match({ userId: userId });
-  console.log(data);
+  const arrayOfTrips = {};
+  data.forEach((trip) => {
+    if (Object.keys(arrayOfTrips).includes(trip.tripName)) {
+      arrayOfTrips[trip.tripName].push(trip);
+    } else {
+      arrayOfTrips[trip.tripName] = [];
+      arrayOfTrips[trip.tripName].push(trip);
+    }
+    console.log(trip.tripName);
+  });
+  console.log(arrayOfTrips);
   res.send("GOT THE DATA!");
 });
 
