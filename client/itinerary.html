@@ -62,7 +62,7 @@
           <button type="button" onclick="displayInput()">Edit Trip</button>
           <input
             type="text"
-            id="new-name"
+            id="newTripName"
             name="newTripName"
             value="${tripName}"
             style="display: none"
@@ -70,15 +70,15 @@
           <button type="submit" id="edit-trip-button" style="display: none">
             Submit Changes
           </button>
-        </form>
+        </form></div>
         `).join("")}
-      </div>
+      
     </div>
   </body>
   <script>
     const displayInput = () => {
       const editButton = document.querySelector("#edit-trip-button");
-      const inputField = document.querySelector("#new-name");
+      const inputField = document.querySelector("#newTripName");
       const editForm = document.querySelector("#editForm");
       if (inputField.style.display === "none") {
         inputField.style.display = "block";
