@@ -16,7 +16,10 @@
         <div class="small-trip-card">
           ${trips.map(trip =>`
           <h3>Park Name: ${trip.Parks.parkName}</h3>
-          `).join("")}
+          <button type="button">Delete From Trip</button>
+          `).join("")} <br>
+          <button type="button">Edit Trip</button>
+          <button type="button">Delete Trip</button>
         </div>
         `).join("")}
       </div>
