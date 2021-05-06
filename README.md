@@ -8,10 +8,10 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ## Team members:
 * <a href="https://github.com/Jessicahaugen">Jessica Haugen</a>
-* Taylor Lightbourne https://github.com/taylorlightbourne
-* Patrick Groves https://github.com/pgroves95
-* Whitney Svoboda https://github.com/wsvoboda
-* Michael Bulostin https://github.com/mjbulostin
+* <a href="https://github.com/taylorlightbourne">Taylor Lightbourne</a>
+* <a href="https://github.com/pgroves95">Patrick Groves</a>
+* <a href="https://github.com/wsvoboda">Whitney Svoboda</a>
+* <a href="https://github.com/mjbulostin">Michael Bulostin</a>
 
 ### Database table diagram with associations:
 
