@@ -13,7 +13,7 @@
   <body>
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="assets/logo.png" alt="" width="180px" height="80px"  class="d-inline-block align-text-top" href="/">
         </a>
         <ul class="nav justify-content-end">
@@ -36,6 +36,8 @@
     <!-- <form name="form" action="/login" onsubmit="return validateForm()" method="post">
     </form> -->
     <form action="/login" method="POST">
+
+      
       <img src="assets/login.png" alt="" width="180px" height="80px">
       <br>
       <div class="form-floating mb-3">
@@ -46,7 +48,8 @@
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
         <label for="floatingPassword">Password</label>
       </div>
-      <button type="submit" class="btn btn-outline-warning btn-lg">Enter</button>
+      <button type="submit" class="btn btn-outline-warning btn-lg">Login</button>
+      <h4>${message}</h4>
     </form>
   </div>
   </div>
