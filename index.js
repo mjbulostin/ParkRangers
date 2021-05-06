@@ -35,6 +35,10 @@ let parkIdGlobal = "";
 
 const PORT = 3000;
 
+app.get('/', (req,res) => {
+  res.render('home')
+})
+
 app.get("/register", (req, res) => {
   console.log(req.body);
   res.render("register");
@@ -108,7 +112,7 @@ app.post("/login", async (req, res) => {
         } else res.redirect("login");
         res.redirect("explore");
       } else {
-        res.render("login", { locals: { message: "Check Your Password" } });
+        res.render("login", { locals: { message: "Invalid username or password" } });
       }
     });
   } else {
@@ -117,7 +121,11 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/explore", (req, res) => {
+  if(req.session.user){
   res.render("explore");
+  } else {
+    res.render("login", {locals: {message: "Please log in to explore parks"}})
+  }
 });
 
 // Pulls all data from "Users" table. Console logging to ensure data is pulled correctly.
@@ -128,6 +136,7 @@ app.get("/explore", (req, res) => {
 // });
 
 app.get("/view-all-trips", async (req, res) => {
+  if(req.session.user){
   const userId = req.session.user.userId;
   const { data, error } = await supabase
     .from("Trips")
@@ -148,7 +157,11 @@ app.get("/view-all-trips", async (req, res) => {
     }
   });
   res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
+} else {
+  res.render("login", {locals: {message: "Please log in to view your trips"}})
+}
 });
+
 
 // // finds User named "Bob" and updates their name to "New Zealand". Can match with any of the column names (id, lastName, etc).
 // app.post("/updatedata", async (req, res) => {
