@@ -7,7 +7,7 @@
 As a user, I want to explore my options for my upcoming trip. The information available to me on the internet is scattered and I don't know what to choose. I want a place to streamline my decision to choose national parks, lodging, and other recommendations based on location, dates of the trip, and activity preferences.
 
 ## Team members:
-* Jessica Haugen https://github.com/Jessicahaugen
+* <a href="https://github.com/Jessicahaugen">Jessica Haugen</a>
 * Taylor Lightbourne https://github.com/taylorlightbourne
 * Patrick Groves https://github.com/pgroves95
 * Whitney Svoboda https://github.com/wsvoboda
