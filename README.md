@@ -1,14 +1,8 @@
-# Park Rangers
-
----
-
 # Full-stack project
-## brought to you by DigitalCrafts Bootcamp team Park Rangers
+### brought to you by DigitalCrafts Bootcamp team Park Rangers
 
-
-# User story:
+## User story:
 As a user, I want to explore my options for my upcoming trip. The information available to me on the internet is scattered and I don't know what to choose. I want a place to streamline my decision to choose national parks, lodging, and other recommendations based on location, dates of the trip, and activity preferences.
-
 
 ## Team members:
 * Jessica Haugen https://github.com/Jessicahaugen
