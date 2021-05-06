@@ -7,6 +7,16 @@
     <title>Itenerary</title>
   </head>
   <body>
-    <div class="main-container"></div>
+    <div class="main-container">
+      <div class="trip-container">
+        ${Object.entries(objectOfTrips).map(trip => `
+        <div class="small-trip-card">
+          <h2>${trip[0]}</h2>
+          <h2>${trip[1]}</h2>
+        </div>
+        `).join("")}
+        <!-- <p>${objectOfTrips.BestiesTrip[0].tripName}</p> -->
+      </div>
+    </div>
   </body>
 </html>

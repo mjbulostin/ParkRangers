@@ -133,18 +133,17 @@ app.get("/gettrips", async (req, res) => {
     .from("Trips")
     .select()
     .match({ userId: userId });
-  const arrayOfTrips = {};
+  const objectOfTrips = {};
   data.forEach((trip) => {
-    if (Object.keys(arrayOfTrips).includes(trip.tripName)) {
-      arrayOfTrips[trip.tripName].push(trip);
+    if (Object.keys(objectOfTrips).includes(trip.tripName)) {
+      objectOfTrips[trip.tripName].push(trip);
     } else {
-      arrayOfTrips[trip.tripName] = [];
-      arrayOfTrips[trip.tripName].push(trip);
+      objectOfTrips[trip.tripName] = [];
+      objectOfTrips[trip.tripName].push(trip);
     }
-    console.log(trip.tripName);
   });
-  console.log(arrayOfTrips);
-  res.send("GOT THE DATA!");
+  console.log(objectOfTrips);
+  res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
 });
 
 // // finds User named "Bob" and updates their name to "New Zealand". Can match with any of the column names (id, lastName, etc).
