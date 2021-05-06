@@ -108,6 +108,8 @@ const getParkByState = async (state) => {
           parkName: convertInfo.data[i].fullName,
           directionsURL: convertInfo.data[i].directionsUrl,
           moreInfoURL: convertInfo.data[i].url,
+          parkImage:
+            convertInfo.data[i].images[0] && convertInfo.data[i].images[0].url,
           tripName: tripList[0],
           startDate: tripList[1],
           endDate: tripList[2],

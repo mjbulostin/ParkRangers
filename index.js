@@ -62,13 +62,14 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/addToParksDB", async (req, res) => {
-  const { parkName, directionsURL, moreInfoURL } = req.body;
+  const { parkName, directionsURL, moreInfoURL, parkImage } = req.body;
   const { data, error } = await supabase.from("Parks").insert([
     {
       parkName: parkName,
       directionsURL: directionsURL,
       moreInfoURL: moreInfoURL,
       userId: req.session.user.userId,
+      parkImage: parkImage,
     },
   ]);
   console.log(data);
@@ -140,7 +141,7 @@ app.get("/view-all-trips", async (req, res) => {
       .select(
         `
     tripName, startDate, endDate,
-    Parks:parkId ( parkName, id )
+    Parks:parkId ( parkName, parkImage, id )
   `
       )
       .match({ userId: userId })
@@ -169,10 +170,11 @@ app.post("/edit-trip/:tripName", async (req, res) => {
   const newEndDate = req.body.newEndDate;
   const { data, error } = await supabase
     .from("Trips")
-    .update({ tripName: newTripName,
-    startDate: newStartDate,
-    endDate: newEndDate
-     })
+    .update({
+      tripName: newTripName,
+      startDate: newStartDate,
+      endDate: newEndDate,
+    })
     .match({ tripName: tripName });
   res.redirect("/view-all-trips");
 });
