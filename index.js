@@ -159,9 +159,14 @@ app.get("/view-all-trips", async (req, res) => {
 app.post("/edit-trip/:tripName", async (req, res) => {
   const { tripName } = req.params;
   const newTripName = req.body.newTripName;
+  const newStartDate = req.body.newStartDate;
+  const newEndDate = req.body.newEndDate;
   const { data, error } = await supabase
     .from("Trips")
-    .update({ tripName: newTripName })
+    .update({ tripName: newTripName,
+    startDate: newStartDate,
+    endDate: newEndDate
+     })
     .match({ tripName: tripName });
   res.redirect("/view-all-trips");
 });
