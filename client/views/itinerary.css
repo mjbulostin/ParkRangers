@@ -1,9 +1,60 @@
-.trip-container {
-  border: black solid 1px;
-  margin: 5px;
+.main-container {
+  font-family: "Open Sans", sans-serif;
 }
 
-.small-trip-card {
+.trip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black solid 1px;
+  margin: 5px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 3%;
+}
+
+#small-park-card {
   border: pink solid 1px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-details {
+  border: green solid 1px;
+  width: 100%;
+}
+
+.big-park-card-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trip-name {
+  display: flex;
+  justify-content: center;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.edit-trip-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
 }
