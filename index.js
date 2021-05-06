@@ -35,6 +35,10 @@ let parkIdGlobal = "";
 
 const PORT = 3000;
 
+app.get('/', (req,res) => {
+  res.render('home')
+})
+
 app.get("/register", (req, res) => {
   console.log(req.body);
   res.render("register");
@@ -108,7 +112,7 @@ app.post("/login", async (req, res) => {
         } else res.redirect("login");
         res.redirect("explore");
       } else {
-        res.render("login", { locals: { message: "Check Your Password" } });
+        res.render("login", { locals: { message: "Invalid username or password" } });
       }
     });
   } else {
@@ -117,10 +121,15 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/explore", (req, res) => {
+  if(req.session.user){
   res.render("explore");
+  } else {
+    res.render("login", {locals: {message: "Please log in to explore parks"}})
+  }
 });
 
 app.get("/view-all-trips", async (req, res) => {
+  if(req.session.user){
   const userId = req.session.user.userId;
   const { data, error } = await supabase
     .from("Trips")
@@ -142,6 +151,9 @@ app.get("/view-all-trips", async (req, res) => {
     }
   });
   res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
+} else {
+  res.render("login", {locals: {message: "Please log in to view your trips"}})
+}
 });
 
 app.post("/edit-trip/:tripName", async (req, res) => {
@@ -173,6 +185,9 @@ app.post("/delete-trip/:tripName", async (req, res) => {
     .match({ tripName: tripName });
   res.redirect("/view-all-trips");
 });
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on localhost:${PORT}`);
