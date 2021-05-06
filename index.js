@@ -35,9 +35,9 @@ let parkIdGlobal = "";
 
 const PORT = 3000;
 
-app.get('/', (req,res) => {
-  res.render('home')
-})
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
 app.get("/register", (req, res) => {
   console.log(req.body);
@@ -94,7 +94,7 @@ app.post("/addToTripsDB", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { locals: { message: "" } });
 });
 
 app.post("/login", async (req, res) => {
@@ -112,7 +112,9 @@ app.post("/login", async (req, res) => {
         } else res.redirect("login");
         res.redirect("explore");
       } else {
-        res.render("login", { locals: { message: "Invalid username or password" } });
+        res.render("login", {
+          locals: { message: "Invalid username or password" },
+        });
       }
     });
   } else {
@@ -121,39 +123,43 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/explore", (req, res) => {
-  if(req.session.user){
-  res.render("explore");
+  if (req.session.user) {
+    res.render("explore");
   } else {
-    res.render("login", {locals: {message: "Please log in to explore parks"}})
+    res.render("login", {
+      locals: { message: "Please log in to explore parks" },
+    });
   }
 });
 
 app.get("/view-all-trips", async (req, res) => {
-  if(req.session.user){
-  const userId = req.session.user.userId;
-  const { data, error } = await supabase
-    .from("Trips")
-    .select(
-      `
+  if (req.session.user) {
+    const userId = req.session.user.userId;
+    const { data, error } = await supabase
+      .from("Trips")
+      .select(
+        `
     tripName, startDate, endDate,
     Parks:parkId ( parkName, id )
   `
-    )
-    .match({ userId: userId })
-    .order("id", { ascending: true });
-  const objectOfTrips = {};
-  data.forEach((trip) => {
-    if (Object.keys(objectOfTrips).includes(trip.tripName)) {
-      objectOfTrips[trip.tripName].push(trip);
-    } else {
-      objectOfTrips[trip.tripName] = [];
-      objectOfTrips[trip.tripName].push(trip);
-    }
-  });
-  res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
-} else {
-  res.render("login", {locals: {message: "Please log in to view your trips"}})
-}
+      )
+      .match({ userId: userId })
+      .order("id", { ascending: true });
+    const objectOfTrips = {};
+    data.forEach((trip) => {
+      if (Object.keys(objectOfTrips).includes(trip.tripName)) {
+        objectOfTrips[trip.tripName].push(trip);
+      } else {
+        objectOfTrips[trip.tripName] = [];
+        objectOfTrips[trip.tripName].push(trip);
+      }
+    });
+    res.render("itinerary", { locals: { objectOfTrips: objectOfTrips } });
+  } else {
+    res.render("login", {
+      locals: { message: "Please log in to view your trips" },
+    });
+  }
 });
 
 app.post("/edit-trip/:tripName", async (req, res) => {
@@ -171,16 +177,6 @@ app.post("/edit-trip/:tripName", async (req, res) => {
   res.redirect("/view-all-trips");
 });
 
-app.post("/delete-park/:id", async (req, res) => {
-  const { id } = req.params;
-  console.log(req.params);
-  const { data, error } = await supabase
-    .from("Trips")
-    .delete()
-    .match({ parkId: Number(id) });
-  res.redirect("/view-all-trips");
-});
-
 app.post("/delete-trip/:tripName", async (req, res) => {
   const { tripName } = req.params;
   console.log(req.params);
@@ -191,9 +187,16 @@ app.post("/delete-trip/:tripName", async (req, res) => {
   res.redirect("/view-all-trips");
 });
 
-
-
-
 app.listen(PORT, () => {
   console.log(`Server running on localhost:${PORT}`);
+});
+
+app.post("/delete-park/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.params);
+  const { data, error } = await supabase
+    .from("Trips")
+    .delete()
+    .match({ parkId: Number(id) });
+  res.redirect("/view-all-trips");
 });

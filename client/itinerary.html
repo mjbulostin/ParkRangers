@@ -40,15 +40,19 @@
         <h3>${tripName}</h3>
         <h4>Start Date: ${trips[0].startDate}</h4>
         <h4>End Date: ${trips[0].endDate}</h4>
+
         ${trips.map(trip =>`
           <div class="small-trip-card">
+
           <h3>Park Name: ${trip.Parks.parkName}</h3>
           <form action="/delete-park/${trip.Parks.id}" method="POST">
             <input type="hidden" name="parkId" value="${trip.Parks.id}" />
             <button type="submit">Delete From Trip</button>
+
           </form>
         </div>
           `).join("")} <br />
+
         <form action="/delete-trip/${tripName}" method="POST">
           <button type="submit">Delete Trip</button>
         </form>
@@ -62,7 +66,9 @@
           <button type="button" onclick="displayInput(this)">Edit Trip</button>
           <input
             type="text"
+
             class="new-name"
+
             name="newTripName"
             value="${tripName}"
             style="display: none"
@@ -84,12 +90,13 @@
           <button type="submit" class="edit-trip-button" style="display: none">
             Submit Changes
           </button>
-        </form>
+        </form></div>
         `).join("")}
-      </div>
+      
     </div>
   </body>
   <script>
+
     const displayInput = (target) => {
       const editForm = target.parentNode;
       const editButton = editForm.querySelector(".edit-trip-button");
