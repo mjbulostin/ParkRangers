@@ -1,0 +1,9 @@
+.trip-container {
+  border: black solid 1px;
+  margin: 5px;
+}
+
+.small-trip-card {
+  border: pink solid 1px;
+  margin: 5px;
+}
