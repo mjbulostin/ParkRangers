@@ -31,8 +31,7 @@ button {
 .form-control {
   border-width: 2px;
   border-color: #5c4d7d;
-  background-color: #5a189a;
-  opacity: 10%;
+  background-color: #59189a2d;
   width: 100%;
   border-radius: 10%;
 }
@@ -41,14 +40,17 @@ label {
   font-family: "Open Sans", sans-serif;
   color: #5c4d7d;
 }
-#registerLink {
+#loginLink {
   font-size: smaller;
 }
-#registerLink:hover {
+#loginLink:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 
 }
 input {
   color: black;
+}
+button {
+  opacity: 70%;
 }

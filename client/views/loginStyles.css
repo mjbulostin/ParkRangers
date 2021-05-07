@@ -23,7 +23,7 @@ form {
   flex-direction: column;
   align-items: center;
   margin-bottom: 150px;
-  margin-left: 180px;
+  margin-left: 350px;
 }
 button {
   margin-top: 10%;
@@ -31,8 +31,7 @@ button {
 .form-control{
   border-width: 2px; 
   border-color: #ffbe0b;
-  background-color: #5a189a;
-  opacity: 10%;
+  background-color: #59189a00;
   width: 100%;
   border-radius: 10%;
 }   
@@ -40,10 +39,13 @@ input, label {
   font-family: "Open Sans", sans-serif;
   color: #ffbe0b;
 }
-#loginLink {
+input {
+  color: black;
+}
+#registerLink {
   font-size: smaller;
 }
-#loginLink:hover {
+#registerLink:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 
