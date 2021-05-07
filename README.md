@@ -37,6 +37,8 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ![Screen Shot 2021-05-06 at 12 17 59 PM](https://user-images.githubusercontent.com/56733715/117348980-dd79fd00-ae78-11eb-812d-d229df6f55a9.png)
 
+[ADD SCREENSHOTS OF OTHER PAGES INCLUDING "EXPLORE, WANDER PLAN, ITINERARY, ETC..."]
+
 
 ### Back-end:
 * Node.js
@@ -70,7 +72,7 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ---
 
-### Ideas for future iterations with additions to functionality and content:
+### Future iteration ideas w/ additions to functionality & content:
 * Profile page shows the itinerary history
 * The ability to rate your own trip
 * The ability to add pictures from your trip to a gallery

@@ -1,9 +1,84 @@
-.trip-container {
-  border: black solid 1px;
-  margin: 5px;
+/* body {
+  /* background-image: url("client/assets/ballbackground.png"); */
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  background-image: url("/client/assets/ballbackground.png");
+  color: rgb(54, 34, 34);
 }
 
-.small-trip-card {
-  border: pink solid 1px;
+.trip-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: #ffbe0b solid 2px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 3%;
   margin: 5px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#small-park-card {
+  border: #5a189a solid 1px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.trip-details {
+  /* border: green solid 1px; */
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  margin: 3%;
+}
+
+.big-park-card-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trip-name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 45em;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.edit-trip-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+}
+.header {
+  display: flex;
+  justify-self: flex-start;
+  width: 80%;
+  padding-left: 3%;
+  font-size: 75px;
 }
