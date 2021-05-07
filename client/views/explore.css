@@ -1,0 +1,144 @@
+
+body {
+  background-color: rgb(253, 247, 232);
+}
+
+.done-btn-div {
+  margin: 2rem !important;
+  margin-left: 47vw !important;
+}
+
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  background-image: url('/client/assets/ballbackground.png');
+  color: rgb(54, 34, 34);
+}
+.givetripName {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  padding: 2%;
+}
+.trip {
+  width: 50%;
+}
+#start {
+  width: 50%;
+}
+#end {
+  width: 50%;
+}
+.selectpicker {
+  width: 50%;
+}
+.selectState {
+  width: 50%;
+}
+
+.fullSearch {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  border: rgb(29, 75, 28) solid 3px;
+  border-radius: 8px;
+  padding: 2%;
+  margin-top: 5%;
+  background-color: #5c4d7d;
+
+  color: rgb(253, 247, 232);
+  font-family: "Boogaloo", cursive;
+
+
+}
+.choiceContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3%;
+}
+.regionContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+.dateContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  /* padding: 2%; */
+}
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+#formSubmit {
+  width: 50%;
+  margin-top: 3%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100px;
+  padding-top: 25px;
+}
+a {
+  font-family: 'Boogaloo', cursive;
+  text-decoration: none;
+  color: black;
+  font-size: x-large;
+}
+nav a:hover {
+  color: black;
+  text-shadow: 2px 2px 4px rgb(57, 8, 85);
+}
+
+.card {
+  width: 50% !important;
+  height: 50% !important;
+  margin: 1%;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.card-img-top {
+  max-width: 70%;
+  border-radius: 2px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  justify-content: space-around;
+}
+
+.card button {
+  width: 40% !important;
+  margin: auto;
+  margin-top: 5px;
+}

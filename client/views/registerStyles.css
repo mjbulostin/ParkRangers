@@ -1,22 +1,24 @@
 body {
-  margin-left: 15%;
-  margin-right: 15%;
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
 }
 nav {
   text-decoration: none;
   height: 100px;
   padding-top: 25px;
+  color: rgb(54, 34, 34);
 }
-a {
-  font-family: "Open Sans", sans-serif;
+nav a {
+  font-family: "Boogaloo", cursive;
   text-decoration: none;
-  color: black;
+  color: rgb(54, 34, 34);
+  font-size: x-large;
+  font-weight: bold;
 }
 nav a:hover {
-  color: black;
+  color: rgb(54, 34, 34);
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -31,8 +33,7 @@ button {
 .form-control {
   border-width: 2px;
   border-color: #5c4d7d;
-  background-color: #5a189a;
-  opacity: 10%;
+  background-color: #59189a2d;
   width: 100%;
   border-radius: 10%;
 }
@@ -41,14 +42,18 @@ label {
   font-family: "Open Sans", sans-serif;
   color: #5c4d7d;
 }
-#registerLink {
-  font-size: smaller;
+#loginLink {
+  font-family: "Boogaloo", cursive;
+  text-decoration: none;
+  color: rgb(54, 34, 34);
 }
-#registerLink:hover {
-  color: black;
+#loginLink:hover {
+  color: rgb(54, 34, 34);
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
-
 }
 input {
-  color: black;
+  color: rgb(54, 34, 34);
+}
+button {
+  opacity: 70%;
 }

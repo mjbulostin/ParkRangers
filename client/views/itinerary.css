@@ -1,9 +1,115 @@
-.trip-container {
-  border: black solid 1px;
-  margin: 5px;
+body {
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
+  font-family: 'Boogaloo', cursive;
+}
+.container {
+  width: 100%;
+  font-family: 'Boogaloo', cursive;
+}
+nav a {
+  font-family: 'Boogaloo', cursive;
+  text-decoration: none;
+  color: black;
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(54, 34, 34);
+}
+nav a:hover {
+  color: black;
+  text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
 
-.small-trip-card {
-  border: pink solid 1px;
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  color: rgb(54, 34, 34);
+}
+
+.trip-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: #ffbe0b solid 2px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 3%;
   margin: 5px;
+  background-color: white;
+}
+
+#small-park-card {
+  border: #5a189a solid 1px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-details {
+  width: 100%;
+  margin: 3%;
+}
+
+.big-park-card-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trip-name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 45em;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1.4rem;
+  width: 60%;
+}
+
+.edit-trip-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.card-img-top {
+  width: 17.6rem;
+  height: 12rem;
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+}
+
+.header {
+  display: flex;
+  justify-self: flex-start;
+  width: 80%;
+  padding-left: 3%;
+  font-size: 75px;
+}
+nav {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100px;
+  padding-top: 25px;
 }

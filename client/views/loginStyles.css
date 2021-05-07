@@ -1,50 +1,61 @@
 body {
-  margin-left: 15%;
-  margin-right: 15%;
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
 }
+.mainContainer {
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 nav {
   text-decoration: none;
   height: 100px;
   padding-top: 25px;
-
+  color: rgb(54, 34, 34);
 }
-a {
-  font-family: "Open Sans", sans-serif;
+nav a {
+  font-family: "Boogaloo", cursive;
   text-decoration: none;
-  color: black;
+  color: rgb(54, 34, 34);
+  font-size: x-large;
+  font-weight: bold;
 }
 nav a:hover {
-  color: black;
+  color: rgb(54, 34, 34);
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
-
-form {
+.formDiv {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 150px;
-  margin-left: 180px;
+  /* margin-left: 30%; */
 }
 button {
   margin-top: 10%;
 }
-.form-control{
-  border-width: 2px; 
+.form-control {
+  border-width: 2px;
   border-color: #ffbe0b;
-  background-color: #5a189a;
-  opacity: 10%;
+  background-color: #59189a00;
   width: 100%;
   border-radius: 10%;
-}   
-input, label {
+}
+input,
+label {
   font-family: "Open Sans", sans-serif;
   color: #ffbe0b;
 }
-#loginLink {
-  font-size: smaller;
+input {
+  color: rgb(54, 34, 34);
 }
-#loginLink:hover {
-  color: black;
+#registerLink {
+  font-family: "Boogaloo", cursive;
+  text-decoration: none;
+}
+#registerLink:hover {
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
-
 }
