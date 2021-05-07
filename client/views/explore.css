@@ -95,3 +95,36 @@ nav a:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
+
+.card {
+  width: 50% !important;
+  height: 50% !important;
+  margin: 1%;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.card-img-top {
+  max-width: 70%;
+  border-radius: 2px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  justify-content: space-around;
+}
+
+.card button {
+  width: 40% !important;
+  margin: auto;
+  margin-top: 5px;
+}
