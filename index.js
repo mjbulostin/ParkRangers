@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 app.engine("html", es6Renderer);
+
 app.set("views", "client");
 app.set("view engine", "html");
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -141,6 +143,23 @@ app.get("/explore", (req, res) => {
     });
   }
 });
+
+app.get("/user-trip-names",async (req,res) => {
+  nameObj = {nameString: ""}
+  const userId = req.session.user.userId
+  const {data,error} = await supabase
+  .from("Trips")
+  .select(`tripName`)
+  .match({userId: userId})
+  if(data){
+    for(object of data){
+      nameObj.nameString+=object.tripName
+    }
+    res.send(nameObj)
+  }
+  else{console.log(error)}
+  
+})
 
 app.get("/view-all-trips", async (req, res) => {
   if (req.session.user) {
