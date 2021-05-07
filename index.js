@@ -84,7 +84,7 @@ app.post("/addToParksDB", async (req, res) => {
   ]);
   console.log(data);
   parkIdGlobal = data[0].id;
-  res.send("WORKS~!");
+  res.send("WORKS!");
 });
 
 app.post("/addToTripsDB", async (req, res) => {
@@ -110,7 +110,6 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
   let username = req.body.username;
-  let password = req.body.password; //delete later if not scared
   const { data, error } = await supabase
     .from("Users")
     .select()
