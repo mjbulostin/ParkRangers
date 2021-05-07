@@ -1,12 +1,17 @@
+.done-btn-div {
+  margin: 2rem !important;
+  margin-left: 47vw !important;
+}
+
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   width: 100%;
-  background-image: url("/client/assets/ballbackground.png");
+  background-image: url('/client/assets/ballbackground.png');
   color: rgb(54, 34, 34);
 }
 .givetripName {
@@ -45,7 +50,7 @@
   margin-top: 5%;
   background-color: #5c4d7d;
   color: beige;
-  font-family: "Boogaloo", cursive;
+  font-family: 'Boogaloo', cursive;
 }
 .choiceContainer {
   width: 100%;
@@ -86,7 +91,7 @@ nav {
   padding-top: 25px;
 }
 a {
-  font-family: "Boogaloo", cursive;
+  font-family: 'Boogaloo', cursive;
   text-decoration: none;
   color: black;
   font-size: x-large;

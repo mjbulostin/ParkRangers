@@ -1,3 +1,4 @@
+let body = document.querySelector("body")
 let parkList = document.querySelector(".main");
 let tripNameField = document.querySelector(".trip")
 let tripList = [];
@@ -5,13 +6,7 @@ let form = document.querySelector("form.fullSearch");
 let regionSelector = form.querySelector(".selectpicker");
 let stateSelector = form.querySelector(".selectState");
 
-
-
-
-
-
-
-
+//state lists for region categories
 const statesByRegion = {
   west: ["AK", "NV", "CA", "AZ", "WA", "OR", "ID"],
   midwest: [
@@ -38,7 +33,7 @@ const statesByRegion = {
 };
 
 
-
+//calls parks API after validating user does not have duplicate trip name
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const state = stateSelector.value;
@@ -68,6 +63,7 @@ form.addEventListener("submit", async (e) => {
   return false;
 });
 
+//API call and card generator
 const getParkByState = async (state) => {
   const getInfo = await fetch(
     `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=m6434v3FtLw4YiOsDKpm5lq611cn54CHw1iRchdH`
@@ -75,8 +71,6 @@ const getParkByState = async (state) => {
   const convertInfo = await getInfo.json();
 
   parkList.innerHTML = "";
-
-  let dataForDB = [];
 
   for (let i = 0; i < convertInfo.data.length; i++) {
     let parkContainer = document.createElement("div");
@@ -110,9 +104,8 @@ const getParkByState = async (state) => {
     parkName.className = "parkNames";
     parkName.innerHTML = convertInfo.data[i].fullName;
     let itenerary = document.createElement("button");
-    itenerary.innerHTML = `add to itenerary +`;
+    itenerary.innerHTML = `Add to Itinerary +`;
     itenerary.className = "btn btn-success btn-sm text-light";
-    let moreInfoURL = convertInfo.data[i].url;
 
     itenerary.addEventListener("click", async function () {
       const dataForParkDB = await fetch("http://localhost:3000/addToParksDB", {
@@ -153,10 +146,18 @@ const getParkByState = async (state) => {
     infoDiv.append(parkName, parkState, viewMore, itenerary);
     imgDiv.append(mainImg);
     parkContainer.append(imgDiv, infoDiv);
-    parkList.append(parkContainer);
+    parkList.append(parkContainer); 
   }
+  const doneBtnDiv = document.createElement("div")
+  doneBtnDiv.className = "done-btn-div"
+  const tripRedirectLink = document.createElement("a")
+  tripRedirectLink.href = "/view-all-trips"
+  tripRedirectLink.innerHTML = '<button type="button" class="btn btn-primary btn-lg text-light">Save Trip</button>'
+  doneBtnDiv.append(tripRedirectLink)
+  body.append(doneBtnDiv)
 };
 
+//generates state list based on region selection
 regionSelector.addEventListener("change", (e) => {
   const region = e.target.value;
   const states = statesByRegion[region];
