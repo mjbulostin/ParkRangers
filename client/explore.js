@@ -1,13 +1,17 @@
 let parkList = document.querySelector(".main");
-let regionContainer = document.querySelector("#regioncontainer")
 let tripNameField = document.querySelector(".trip")
+let tripList = [];
+let form = document.querySelector("form.fullSearch");
+let regionSelector = form.querySelector(".selectpicker");
+let stateSelector = form.querySelector(".selectState");
 
 
 
 
 
 
-// if region ==
+
+
 const statesByRegion = {
   west: ["AK", "NV", "CA", "AZ", "WA", "OR", "ID"],
   midwest: [
@@ -33,8 +37,7 @@ const statesByRegion = {
   northeast: ["ME", "VT", "NH", "NY", "PA", "NJ", "MD", "DE", "NJ", "WV", "VA"],
 };
 
-let tripList = [];
-let form = document.querySelector("form.fullSearch");
+
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -48,8 +51,8 @@ form.addEventListener("submit", async (e) => {
   for(tName of usedNames){
     console.log(usedNames)
     if(tName === tripName.value){
-      console.log(tripName.value)
       tripName.value = ""
+      regionSelector.value = ""
       alert("That trip name already exists. Please enter a unique name.")
       location.reload()
 
@@ -153,10 +156,6 @@ const getParkByState = async (state) => {
     parkList.append(parkContainer);
   }
 };
-
-let regionSelector = form.querySelector(".selectpicker");
-let stateSelector = form.querySelector(".selectState");
-let camp = form.querySelector("#camping");
 
 regionSelector.addEventListener("change", (e) => {
   const region = e.target.value;
