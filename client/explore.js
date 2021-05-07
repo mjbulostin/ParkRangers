@@ -152,7 +152,7 @@ const getParkByState = async (state) => {
   doneBtnDiv.className = "done-btn-div"
   const tripRedirectLink = document.createElement("a")
   tripRedirectLink.href = "/view-all-trips"
-  tripRedirectLink.innerHTML = '<button type="button" class="btn btn-primary btn-lg text-light">Save Trip</button>'
+  tripRedirectLink.innerHTML = '<button type="button" class="btn btn-warning btn-lg text-light">Save Trip</button>'
   doneBtnDiv.append(tripRedirectLink)
   body.append(doneBtnDiv)
 };
