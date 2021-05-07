@@ -3,16 +3,17 @@ nav {
   height: 100px;
   padding-top: 25px;
 }
-a {
-  font-family: "Open Sans", sans-serif;
+nav a {
+  font-family: "Boogaloo", cursive;
   text-decoration: none;
   color: black;
+  font-size: x-large;
+  font-weight: bold;
 }
 nav a:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -37,12 +38,13 @@ label {
   color: #5c4d7d;
 }
 #loginLink {
-  font-size: smaller;
+  font-family: "Boogaloo", cursive;
+  text-decoration: none;
+  color: black;
 }
 #loginLink:hover {
   color: black;
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
-
 }
 input {
   color: black;
