@@ -1,6 +1,8 @@
 body {
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
 }
 nav {
   text-decoration: none;
@@ -10,6 +12,7 @@ nav {
   justify-content: center;
   align-content: center;
   margin: auto;
+  color: rgb(54, 34, 34);
 }
 a {
   font-family: "Boogaloo", cursive;
@@ -37,15 +40,15 @@ nav a:hover {
   height: 100vh;
 }
 
- @media screen and (max-width: 1350px) { 
-    main {
-        width: 90%;
-        height: 100vh;
-        background-size: cover;
-    }
-    .navbar {
-        width: 100%;
-        background-size: cover;
-        height:max-content;
-    }
+@media screen and (max-width: 1350px) {
+  main {
+    width: 90%;
+    height: 100vh;
+    background-size: cover;
+  }
+  */ .navbar {
+    width: 100%;
+    background-size: cover;
+    height: max-content;
+  }
 }
