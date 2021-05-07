@@ -5,13 +5,7 @@ let form = document.querySelector("form.fullSearch");
 let regionSelector = form.querySelector(".selectpicker");
 let stateSelector = form.querySelector(".selectState");
 
-
-
-
-
-
-
-
+//state lists for region categories
 const statesByRegion = {
   west: ["AK", "NV", "CA", "AZ", "WA", "OR", "ID"],
   midwest: [
@@ -38,7 +32,7 @@ const statesByRegion = {
 };
 
 
-
+//calls parks API after validating user does not have duplicate trip name
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const state = stateSelector.value;
@@ -68,6 +62,7 @@ form.addEventListener("submit", async (e) => {
   return false;
 });
 
+//API call and card generator
 const getParkByState = async (state) => {
   const getInfo = await fetch(
     `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=m6434v3FtLw4YiOsDKpm5lq611cn54CHw1iRchdH`
@@ -157,6 +152,7 @@ const getParkByState = async (state) => {
   }
 };
 
+//generates state list based on region selection
 regionSelector.addEventListener("change", (e) => {
   const region = e.target.value;
   const states = statesByRegion[region];

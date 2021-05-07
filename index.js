@@ -37,6 +37,8 @@ let parkIdGlobal = "";
 
 const PORT = 3000;
 
+//get routes for html pages
+
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -47,91 +49,8 @@ app.get("/register", (req, res) => {
   });
 });
 
-app.post("/register", async (req, res) => {
-  const { firstName, lastName, email, username, password } = req.body;
-  const { data, error } = await supabase
-    .from("Users")
-    .select()
-    .match({ username: username });
-  if (data[0] !== undefined) {
-    res.render("register", {
-      locals: { message: "That username is already in use" },
-    });
-  } else {
-    const SALT = await bcrypt.genSalt();
-    const hash = await bcrypt.hash(req.body.password, SALT);
-    const { data, error } = await supabase.from("Users").insert([
-      {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        username: username,
-        password: hash,
-      },
-    ]);
-    res.redirect("/explore");
-  }
-});
-
-app.post("/addToParksDB", async (req, res) => {
-  const { parkName, directionsURL, moreInfoURL, parkImage } = req.body;
-  const { data, error } = await supabase.from("Parks").insert([
-    {
-      parkName: parkName,
-      directionsURL: directionsURL,
-      moreInfoURL: moreInfoURL,
-      userId: req.session.user.userId,
-      parkImage: parkImage,
-    },
-  ]);
-  console.log(data);
-  parkIdGlobal = data[0].id;
-  res.send("WORKS!");
-});
-
-app.post("/addToTripsDB", async (req, res) => {
-  const { tripName, startDate, endDate } = req.body;
-  console.log(parkIdGlobal);
-
-  const { data, error } = await supabase.from("Trips").insert([
-    {
-      userId: req.session.user.userId,
-      tripName: tripName,
-      startDate: startDate,
-      endDate: endDate,
-      parkId: parkIdGlobal,
-    },
-  ]);
-  console.log(data);
-  res.send("WORKS~!");
-});
-
 app.get("/login", (req, res) => {
   res.render("login", { locals: { message: "" } });
-});
-
-app.post("/login", async (req, res) => {
-  let username = req.body.username;
-  const { data, error } = await supabase
-    .from("Users")
-    .select()
-    .match({ username: username });
-  if (data.length > 0) {
-    bcrypt.compare(req.body.password, data[0].password, (error, result) => {
-      if (result) {
-        if (req.session) {
-          req.session.user = { userId: data[0].id, username: data[0].username };
-        } else res.redirect("login");
-        res.redirect("explore");
-      } else {
-        res.render("login", {
-          locals: { message: "Invalid username or password" },
-        });
-      }
-    });
-  } else {
-    res.render("login");
-  }
 });
 
 app.get("/explore", (req, res) => {
@@ -144,23 +63,7 @@ app.get("/explore", (req, res) => {
   }
 });
 
-app.get("/user-trip-names",async (req,res) => {
-  nameObj = {nameString: ""}
-  const userId = req.session.user.userId
-  const {data,error} = await supabase
-  .from("Trips")
-  .select(`tripName`)
-  .match({userId: userId})
-  if(data){
-    for(object of data){
-      nameObj.nameString+=object.tripName
-    }
-    res.send(nameObj)
-  }
-  else{console.log(error)}
-  
-})
-
+//queries DB and sends massaged json object to populate user's trip list
 app.get("/view-all-trips", async (req, res) => {
   if (req.session.user) {
     const userId = req.session.user.userId;
@@ -191,6 +94,115 @@ app.get("/view-all-trips", async (req, res) => {
   }
 });
 
+//adds account if username is not already in use.
+app.post("/register", async (req, res) => {
+  const { firstName, lastName, email, username, password } = req.body;
+  const { data, error } = await supabase
+    .from("Users")
+    .select()
+    .match({ username: username });
+  if (data[0] !== undefined) {
+    res.render("register", {
+      locals: { message: "That username is already in use" },
+    });
+  } else {
+    const SALT = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(req.body.password, SALT);
+    const { data, error } = await supabase.from("Users").insert([
+      {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        username: username,
+        password: hash,
+      },
+    ]);
+    res.redirect("/explore");
+  }
+});
+
+//adds a park to the DB with FK's user id and trip id
+app.post("/addToParksDB", async (req, res) => {
+  const { parkName, directionsURL, moreInfoURL, parkImage } = req.body;
+  const { data, error } = await supabase.from("Parks").insert([
+    {
+      parkName: parkName,
+      directionsURL: directionsURL,
+      moreInfoURL: moreInfoURL,
+      userId: req.session.user.userId,
+      parkImage: parkImage,
+    },
+  ]);
+  console.log(data);
+  parkIdGlobal = data[0].id;
+  res.send("WORKS!");
+});
+
+
+//validate username, and password against hashed password in DB
+app.post("/login", async (req, res) => {
+  let username = req.body.username;
+  const { data, error } = await supabase
+    .from("Users")
+    .select()
+    .match({ username: username });
+  if (data.length > 0) {
+    bcrypt.compare(req.body.password, data[0].password, (error, result) => {
+      if (result) {
+        if (req.session) {
+          req.session.user = { userId: data[0].id, username: data[0].username };
+        } else res.redirect("login");
+        res.redirect("explore");
+      } else {
+        res.render("login", {
+          locals: { message: "Invalid username or password" },
+        });
+      }
+    });
+  } else {
+    res.render("login");
+  }
+});
+
+//client side CRUD routes (not HTML pages)
+
+//return list of user's trips for trip name validation
+app.get("/user-trip-names",async (req,res) => {
+  nameObj = {nameString: ""}
+  const userId = req.session.user.userId
+  const {data,error} = await supabase
+  .from("Trips")
+  .select(`tripName`)
+  .match({userId: userId})
+  if(data){
+    for(object of data){
+      nameObj.nameString+=object.tripName
+    }
+    res.send(nameObj)
+  }
+  else{console.log(error)}
+  
+})
+
+//Create a trip in the DB
+app.post("/addToTripsDB", async (req, res) => {
+  const { tripName, startDate, endDate } = req.body;
+  console.log(parkIdGlobal);
+
+  const { data, error } = await supabase.from("Trips").insert([
+    {
+      userId: req.session.user.userId,
+      tripName: tripName,
+      startDate: startDate,
+      endDate: endDate,
+      parkId: parkIdGlobal,
+    },
+  ]);
+  console.log(data);
+  res.send("WORKS~!");
+});
+
+//Modify the name and dates of a user's trip
 app.post("/edit-trip/:tripName", async (req, res) => {
   const { tripName } = req.params;
   const newTripName = req.body.newTripName;
@@ -207,6 +219,7 @@ app.post("/edit-trip/:tripName", async (req, res) => {
   res.redirect("/view-all-trips");
 });
 
+//delete a user's trip
 app.post("/delete-trip/:tripName", async (req, res) => {
   const { tripName } = req.params;
   console.log(req.params);
@@ -217,10 +230,7 @@ app.post("/delete-trip/:tripName", async (req, res) => {
   res.redirect("/view-all-trips");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on localhost:${PORT}`);
-});
-
+//Delete park from a user's trip
 app.post("/delete-park/:id", async (req, res) => {
   const { id } = req.params;
   console.log(req.params);
@@ -229,4 +239,9 @@ app.post("/delete-park/:id", async (req, res) => {
     .delete()
     .match({ parkId: Number(id) });
   res.redirect("/view-all-trips");
+});
+
+//start server
+app.listen(PORT, () => {
+  console.log(`Server running on localhost:${PORT}`);
 });
