@@ -31,26 +31,30 @@
           </li>
       </ul>
   </nav>
-    <div class="bg-image d-flex align-items-center" style="background-image: url('assets/background1.png'); height: 100vh; background-repeat: no-repeat; background-size: contain;">
+  <div class="mainContainer">
+    <div class="bg-image d-flex align-items-center" style="background-image: url('assets/background1.png'); height: 100vh; background-repeat: no-repeat; background-size: cover;">
     <!-- <form name="form" action="/login" onsubmit="return validateForm()" method="post">
     </form> -->
-    <form action="/login" method="POST">
-      <img src="assets/login.png" alt="" width="180px" height="80px">
-      <br>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required>
-        <label for="floatingInput">Username</label>
+        <div class =formDiv>
+          <form action="/login" method="POST">
+            <img src="assets/login.png" alt="" width="180px" height="80px">
+            <br>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required>
+              <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button type="submit" class="btn btn-outline-warning btn-lg">Login</button>
+            <h4>${message}</h4>
+            <br>
+            <a id="registerLink" href="/register">Create an Account Here</a>
+          </form>
+        </div>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-        <label for="floatingPassword">Password</label>
-      </div>
-      <button type="submit" class="btn btn-outline-warning btn-lg">Login</button>
-      <h4>${message}</h4>
-      <br>
-      <a id="registerLink" href="/register">Create an Account Here</a>
-    </form>
-  </div>
+    </div>
   </div>
   </body>
 </html>
