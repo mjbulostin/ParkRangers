@@ -52,6 +52,14 @@ As a user, I want to explore my options for my upcoming trip. The information av
 * Full C.R.U.D. functionality
 * Bcrypt user authentication & validation
 
+### NPM packages:
+*  "@supabase/supabase-js": "^1.11.9",
+*  "bcrypt": "^5.0.1",
+*  "cors": "^2.8.5",
+*  "express": "^4.17.1",
+*  "express-es6-template-engine": "^2.2.3",
+* "express-session": "^1.17.1"
+
 ---
 
 ### Front-end:
