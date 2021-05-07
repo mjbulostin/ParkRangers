@@ -35,7 +35,7 @@
     <div class="bg-image d-flex align-items-center" style="background-image: url('assets/background2.png'); height: 100vh; background-repeat: no-repeat; background-size: contain;">
     <form name="form" action="/login" onsubmit="return validateForm()" method="post">
     </form>
-    <form>
+    <form action="/register" method="POST">
       <img src="assets/create account.png" alt="" width="180px" height="80px">
       <br>
       <div class="form-floating mb-3">
@@ -58,9 +58,9 @@
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
         <label for="floatingPassword">Password</label>
       </div>
-      <button type="submit" class="btn btn-dark btn-lg">Create Account</button>
+      <button type="submit" class="btn btn-outline-secondary btn-lg">Create Account</button><h4>${message}</h4>
       <br>
-      <a id="loginLink" href="/login">Already Have an Account? Login Here</a>
+      <a id="registerLink" href="/register">Already Have an Account? Login Here</a>
     </form>
   </div>
   </div>

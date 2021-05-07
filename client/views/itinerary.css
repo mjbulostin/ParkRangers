@@ -75,10 +75,19 @@
   justify-content: center;
   justify-content: space-around;
 }
+
+
+.card-img-top {
+  width: 17.6rem;
+  height: 12rem;
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+
 .header {
   display: flex;
   justify-self: flex-start;
   width: 80%;
   padding-left: 3%;
   font-size: 75px;
+
 }

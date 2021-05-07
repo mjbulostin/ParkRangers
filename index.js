@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 app.engine("html", es6Renderer);
-app.set("views", "client"); 
-app.set("view engine", "html"); 
+
+app.set("views", "client");
+app.set("view engine", "html");
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -40,40 +42,51 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  console.log(req.body);
-  res.render("register");
+  res.render("register", {
+    locals: { message: "" },
+  });
 });
 
 app.post("/register", async (req, res) => {
   const { firstName, lastName, email, username, password } = req.body;
-  const SALT = await bcrypt.genSalt();
-  const hash = await bcrypt.hash(req.body.password, SALT);
-  const { data, error } = await supabase.from("Users").insert([
-    {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      username: username,
-      password: hash,
-    },
-  ]);
-  console.log("REGISTERED");
-  res.redirect("explore");
+  const { data, error } = await supabase
+    .from("Users")
+    .select()
+    .match({ username: username });
+  if (data[0] !== undefined) {
+    res.render("register", {
+      locals: { message: "That username is already in use" },
+    });
+  } else {
+    const SALT = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(req.body.password, SALT);
+    const { data, error } = await supabase.from("Users").insert([
+      {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        username: username,
+        password: hash,
+      },
+    ]);
+    res.redirect("/explore");
+  }
 });
 
 app.post("/addToParksDB", async (req, res) => {
-  const { parkName, directionsURL, moreInfoURL } = req.body;
+  const { parkName, directionsURL, moreInfoURL, parkImage } = req.body;
   const { data, error } = await supabase.from("Parks").insert([
     {
       parkName: parkName,
       directionsURL: directionsURL,
       moreInfoURL: moreInfoURL,
       userId: req.session.user.userId,
+      parkImage: parkImage,
     },
   ]);
   console.log(data);
   parkIdGlobal = data[0].id;
-  res.send("WORKS~!");
+  res.send("WORKS!");
 });
 
 app.post("/addToTripsDB", async (req, res) => {
@@ -156,7 +169,7 @@ app.get("/view-all-trips", async (req, res) => {
       .select(
         `
     tripName, startDate, endDate,
-    Parks:parkId ( parkName, id )
+    Parks:parkId ( parkName, parkImage, id )
   `
       )
       .match({ userId: userId })
@@ -185,10 +198,11 @@ app.post("/edit-trip/:tripName", async (req, res) => {
   const newEndDate = req.body.newEndDate;
   const { data, error } = await supabase
     .from("Trips")
-    .update({ tripName: newTripName,
-    startDate: newStartDate,
-    endDate: newEndDate
-     })
+    .update({
+      tripName: newTripName,
+      startDate: newStartDate,
+      endDate: newEndDate,
+    })
     .match({ tripName: tripName });
   res.redirect("/view-all-trips");
 });
