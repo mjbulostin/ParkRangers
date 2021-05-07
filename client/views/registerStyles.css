@@ -1,17 +1,22 @@
+body {
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
+}
 nav {
   text-decoration: none;
   height: 100px;
   padding-top: 25px;
+  color: rgb(54, 34, 34);
 }
 nav a {
   font-family: "Boogaloo", cursive;
   text-decoration: none;
-  color: black;
+  color: rgb(54, 34, 34);
   font-size: x-large;
   font-weight: bold;
 }
 nav a:hover {
-  color: black;
+  color: rgb(54, 34, 34);
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
 form {
@@ -40,14 +45,14 @@ label {
 #loginLink {
   font-family: "Boogaloo", cursive;
   text-decoration: none;
-  color: black;
+  color: rgb(54, 34, 34);
 }
 #loginLink:hover {
-  color: black;
+  color: rgb(54, 34, 34);
   text-shadow: 2px 2px 4px rgb(57, 8, 85);
 }
 input {
-  color: black;
+  color: rgb(54, 34, 34);
 }
 button {
   opacity: 70%;

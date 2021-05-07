@@ -1,5 +1,11 @@
+body {
+  background-color: rgb(253, 247, 232);
+  color: rgb(54, 34, 34);
+  font-family: "Boogaloo", cursive;
+}
 .container {
   width: 100%;
+  font-family: "Boogaloo", cursive;
 }
 nav a {
   font-family: "Boogaloo", cursive;
@@ -7,6 +13,7 @@ nav a {
   color: black;
   font-size: x-large;
   font-weight: bold;
+  color: rgb(54, 34, 34);
 }
 nav a:hover {
   color: black;
@@ -18,7 +25,6 @@ nav a:hover {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  font-family: "Open Sans", sans-serif;
   width: 100%;
   color: rgb(54, 34, 34);
 }
@@ -34,7 +40,6 @@ nav a:hover {
   width: 80%;
   padding: 3%;
   margin: 5px;
-  font-family: "Open Sans", sans-serif;
   background-color: white;
 }
 
@@ -44,13 +49,10 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 100%; */
 }
 
 .trip-details {
-  /* border: green solid 1px; */
   width: 100%;
-  font-family: "Open Sans", sans-serif;
   margin: 3%;
 }
 

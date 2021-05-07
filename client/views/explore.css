@@ -1,7 +1,13 @@
+
+body {
+  background-color: rgb(253, 247, 232);
+}
+
 .done-btn-div {
   margin: 2rem !important;
   margin-left: 47vw !important;
 }
+
 
 .main {
   display: flex;
@@ -49,8 +55,11 @@
   padding: 2%;
   margin-top: 5%;
   background-color: #5c4d7d;
-  color: beige;
-  font-family: 'Boogaloo', cursive;
+
+  color: rgb(253, 247, 232);
+  font-family: "Boogaloo", cursive;
+
+
 }
 .choiceContainer {
   width: 100%;
