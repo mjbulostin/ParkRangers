@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="https://formden.com/static/cdn/bootstrap-iso.css"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Explore</title>
   </head>
   <body>
@@ -38,13 +42,14 @@
     <div class="main">
       
       <form class="fullSearch">
-        
-        <h1>What would you like to name your trip?</h1>
+        <div class="givetripName">
+        <h2>What would you like to name your trip?</h2>
         <input type="text" name="trip-name" class="trip" />
+        </div>
 
-        <label for="regions"></label>
-        <div class="regionContainer">
-          <div class="row-fluid">
+        <div class="choiceContainer">
+          <div class="regionContainer">
+            <label for="regions"></label>
             <h2>Choose a region to explore</h2>
             <select
               class="selectpicker"
@@ -60,7 +65,7 @@
               <option value="southwest" data-subtext="Region">Southwest</option>
               <option value="southeast" data-subtext="Region">Southeast</option>
             </select>
-            <h2>
+            <h2> 
               Have a state in mind?
             </h2>
             <select
@@ -72,7 +77,9 @@
             >
               <option value="">States</option>
             </select>
-            <h2>When are you going?</h2>
+          </div>
+          <div class = dateContainer>
+              <h2>When are you going?</h2>
             <label for="start">Exploration Kick Off: </label>
 
             <input
@@ -91,9 +98,12 @@
               min="2021-05-01"
               max="2022-12-31"
             />
-            <button type="submit" class="formSubmit">EXPLORE</button>
           </div>
         </div>
+        <div class="buttonDiv">
+        <button type="submit" class="btn btn-warning btn-sm text-light"id="formSubmit">EXPLORE</button>
+        </div>
+      </div>
       </form>
     </div>
   </body>

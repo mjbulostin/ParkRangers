@@ -80,22 +80,22 @@ const getParkByState = async (state) => {
 
   for (let i = 0; i < convertInfo.data.length; i++) {
     let parkContainer = document.createElement("div");
-    parkContainer.className = `container-sm`;
+    parkContainer.className = `card`;
     parkContainer.id = "parkCard";
     let imgDiv = document.createElement("div");
-    imgDiv.className = "imageDiv";
+    imgDiv.className = "card-title";
     let mainImg = document.createElement("img");
-    mainImg.className = "parkImage";
+    mainImg.className = "card-img-top";
     mainImg.height = "325";
     mainImg.width = "325";
     mainImg.src =
       convertInfo.data[i].images[0] && convertInfo.data[i].images[0].url;
     let infoDiv = document.createElement("div");
-    infoDiv.className = "infoDiv";
+    infoDiv.className = "card-body";
     let parkState = document.createElement("h3");
     parkState.innerHTML = `State: ${convertInfo.data[i].states}`;
     let viewMore = document.createElement("button");
-    viewMore.className = "moreInfo";
+    viewMore.className = "btn btn-warning btn-sm text-light";
     viewMore.innerHTML = "More Info?";
     viewMore.addEventListener("click", function () {
       let parkInfo = document.createElement("p");
@@ -110,8 +110,8 @@ const getParkByState = async (state) => {
     parkName.className = "parkNames";
     parkName.innerHTML = convertInfo.data[i].fullName;
     let itenerary = document.createElement("button");
-    itenerary.innerHTML = `add to itenerary <i class="far fa-heart"></i>`;
-    itenerary.className = "addProfile";
+    itenerary.innerHTML = `add to itenerary +`;
+    itenerary.className = "btn btn-success btn-sm text-light";
     let moreInfoURL = convertInfo.data[i].url;
 
     itenerary.addEventListener("click", async function () {
