@@ -6,12 +6,16 @@
 ## User story:
 As a user, I want to explore my options for my upcoming trip. The information available to me on the internet is scattered and I don't know what to choose. I want a place to streamline my decision to choose national parks, lodging, and other recommendations based on location, dates of the trip, and activity preferences.
 
+## Project Timeline:
+* Start: Friday, April 30th, 2021.
+* Presentation: Friday, May 7th, 2021.
+
 ## Team members:
-* <a href="https://github.com/Jessicahaugen">Jessica Haugen</a>
-* <a href="https://github.com/taylorlightbourne">Taylor Lightbourne</a>
-* <a href="https://github.com/pgroves95">Patrick Groves</a>
-* <a href="https://github.com/wsvoboda">Whitney Svoboda</a>
-* <a href="https://github.com/mjbulostin">Michael Bulostin</a>
+* <a href="https://github.com/Jessicahaugen" target="_blank">Jessica Haugen</a>
+* <a href="https://github.com/taylorlightbourne" target="_blank">Taylor Lightbourne</a>
+* <a href="https://github.com/pgroves95" target="_blank">Patrick Groves</a>
+* <a href="https://github.com/wsvoboda" target="_blank">Whitney Svoboda</a>
+* <a href="https://github.com/mjbulostin" target="_blank">Michael Bulostin</a>
 
 ### Database table diagram with associations:
 
@@ -37,7 +41,9 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ![Screen Shot 2021-05-06 at 12 17 59 PM](https://user-images.githubusercontent.com/56733715/117348980-dd79fd00-ae78-11eb-812d-d229df6f55a9.png)
 
-[ADD SCREENSHOTS OF OTHER PAGES INCLUDING "EXPLORE, WANDER PLAN, ITINERARY, ETC..."]
+<img width="992" alt="Screen Shot 2021-05-07 at 10 56 51 AM" src="https://user-images.githubusercontent.com/56733715/117488098-fd252a00-af39-11eb-9411-2684e7bfbe26.png">
+
+<img width="1371" alt="Screen Shot 2021-05-07 at 10 58 11 AM" src="https://user-images.githubusercontent.com/56733715/117488139-0adaaf80-af3a-11eb-89d1-0dacb7c12e42.png">
 
 
 ### Back-end:
@@ -64,6 +70,7 @@ As a user, I want to explore my options for my upcoming trip. The information av
 
 ### Front-end:
 * HTML & External CSS
+* JavaScript
 * Bootstrap elements
 * Media queries
 * Mobile responsiveness
@@ -71,16 +78,25 @@ As a user, I want to explore my options for my upcoming trip. The information av
 ---
 
 ### Learnings & challenges:
-* Lorem ipsum
-* Lorem ipsum
+
+* Some of the group struggled with GitHub in general, specifically with merge conflicts which significantly slowed down the progression of the project, and ultimately forced us to scale back on the initial (ambitious) list of "nice-to-have" items for the site.
+* After the functionality was finalized on the back-end, styling took a while as well as achieving optimal mobile responsiveness to catch up on across all the pages.
 
 ### Successes:
-* Lorem ipsum
-* Lorem ipsum
+
+* The group's initial overall scope, vision, direction, task delegation, and communication were organized and clear.
+* The group's ability to problem-solve (especially on functionality) was top-notch!
+* The group's attention to detail, and willingness to "burn the midnight oil" to accomplish above and beyond the MVP was tremendous.
+* The group was eager to help each other overcome challenges.
 
 ---
 
 ### Future iteration ideas w/ additions to functionality & content:
-* Profile page shows the itinerary history
-* The ability to rate your own trip
-* The ability to add pictures from your trip to a gallery
+
+* The profile page shows the user's general info (username, email, etc…) as well as a section for a history of the previous itineraries, and upcoming trips.
+* The ability to rate your previous trips, and view other users' public itineraries, galleries, and ratings as well.
+* The ability to add pictures from your trip to a private or public gallery.
+* Include an "other activities" section to add to your itinerary including attractions, restaurants, sporting events, etc…
+* Add a maps & directions tool.
+* Adding an "alert" message when deleting items from the itinerary.
+* Add a social element in the form of being able to visit and have visibility to other users' profiles.
