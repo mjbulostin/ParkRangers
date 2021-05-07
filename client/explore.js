@@ -1,3 +1,4 @@
+let body = document.querySelector("body")
 let parkList = document.querySelector(".main");
 let tripNameField = document.querySelector(".trip")
 let tripList = [];
@@ -71,8 +72,6 @@ const getParkByState = async (state) => {
 
   parkList.innerHTML = "";
 
-  let dataForDB = [];
-
   for (let i = 0; i < convertInfo.data.length; i++) {
     let parkContainer = document.createElement("div");
     parkContainer.className = `card`;
@@ -105,9 +104,8 @@ const getParkByState = async (state) => {
     parkName.className = "parkNames";
     parkName.innerHTML = convertInfo.data[i].fullName;
     let itenerary = document.createElement("button");
-    itenerary.innerHTML = `add to itenerary +`;
+    itenerary.innerHTML = `Add to Itinerary +`;
     itenerary.className = "btn btn-success btn-sm text-light";
-    let moreInfoURL = convertInfo.data[i].url;
 
     itenerary.addEventListener("click", async function () {
       const dataForParkDB = await fetch("http://localhost:3000/addToParksDB", {
@@ -148,8 +146,15 @@ const getParkByState = async (state) => {
     infoDiv.append(parkName, parkState, viewMore, itenerary);
     imgDiv.append(mainImg);
     parkContainer.append(imgDiv, infoDiv);
-    parkList.append(parkContainer);
+    parkList.append(parkContainer); 
   }
+  const doneBtnDiv = document.createElement("div")
+  doneBtnDiv.className = "done-btn-div"
+  const tripRedirectLink = document.createElement("a")
+  tripRedirectLink.href = "/view-all-trips"
+  tripRedirectLink.innerHTML = '<button type="button" class="btn btn-primary btn-lg text-light">Save Trip</button>'
+  doneBtnDiv.append(tripRedirectLink)
+  body.append(doneBtnDiv)
 };
 
 //generates state list based on region selection
