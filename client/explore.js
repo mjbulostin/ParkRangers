@@ -1,5 +1,11 @@
 let parkList = document.querySelector(".main");
-let regionContainer = document.querySelector("#regioncontainer");
+let regionContainer = document.querySelector("#regioncontainer")
+let tripNameField = document.querySelector(".trip")
+
+
+
+
+
 
 // if region ==
 const statesByRegion = {
@@ -33,15 +39,28 @@ let form = document.querySelector("form.fullSearch");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const state = stateSelector.value;
-  getParkByState(state);
-  const tripName = form.querySelector(".trip").value;
-  const startDate = form.querySelector("#start").value;
-  const endDate = form.querySelector("#end").value;
-  tripList = [tripName, startDate, endDate];
+  const tripName = form.querySelector(".trip");
+  const data = await fetch("http://localhost:3000/user-trip-names")
+  const json = await data.json()
+  const usedNames = json.nameString.split(" ")
+  const startDate = form.querySelector("#start");
+  const endDate = form.querySelector("#end");
+  for(tName of usedNames){
+    console.log(usedNames)
+    if(tName === tripName.value){
+      console.log(tripName.value)
+      tripName.value = ""
+      alert("That trip name already exists. Please enter a unique name.")
+      location.reload()
 
-  //possibly where we send date data
-  // const date = form.querySelector( ... ).value;
-  // fetch(...) // send the request to the BE with the dates
+    }
+  }
+  if(tripName.value){
+    tripList = [tripName.value, startDate.value, endDate.value]
+    getParkByState(state)
+  }
+  
+
 
   return false;
 });
@@ -51,12 +70,7 @@ const getParkByState = async (state) => {
     `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=m6434v3FtLw4YiOsDKpm5lq611cn54CHw1iRchdH`
   );
   const convertInfo = await getInfo.json();
-  // convertInfo.data = convertInfo.data
-  // .filter((d) => {
-  //   if (camping) {
-  //     return d.activities.find((a) => a.name === "camping");
-  //   }
-  // });
+
   parkList.innerHTML = "";
 
   let dataForDB = [];
