@@ -12,10 +12,11 @@ nav {
   margin: auto;
 }
 a {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Boogaloo", cursive;
   text-decoration: none;
   color: black;
-  display: flex;
+  font-size: x-large;
+  font-weight: bold;
 }
 nav a:hover {
   color: black;
