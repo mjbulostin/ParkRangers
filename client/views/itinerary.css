@@ -1,14 +1,14 @@
 body {
   background-color: rgb(253, 247, 232);
   color: rgb(54, 34, 34);
-  font-family: "Boogaloo", cursive;
+  font-family: 'Boogaloo', cursive;
 }
 .container {
   width: 100%;
-  font-family: "Boogaloo", cursive;
+  font-family: 'Boogaloo', cursive;
 }
 nav a {
-  font-family: "Boogaloo", cursive;
+  font-family: 'Boogaloo', cursive;
   text-decoration: none;
   color: black;
   font-size: x-large;
@@ -81,7 +81,8 @@ nav a:hover {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 80%;
+  margin-top: 1.4rem;
+  width: 60%;
 }
 
 .edit-trip-details {
