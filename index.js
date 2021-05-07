@@ -40,25 +40,35 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  console.log(req.body);
-  res.render("register");
+  res.render("register", {
+    locals: { message: "" },
+  });
 });
 
 app.post("/register", async (req, res) => {
   const { firstName, lastName, email, username, password } = req.body;
-  const SALT = await bcrypt.genSalt();
-  const hash = await bcrypt.hash(req.body.password, SALT);
-  const { data, error } = await supabase.from("Users").insert([
-    {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      username: username,
-      password: hash,
-    },
-  ]);
-  console.log("REGISTERED");
-  res.redirect("/explore");
+  const { data, error } = await supabase
+    .from("Users")
+    .select()
+    .match({ username: username });
+  if (data[0] !== undefined) {
+    res.render("register", {
+      locals: { message: "That username is already in use" },
+    });
+  } else {
+    const SALT = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(req.body.password, SALT);
+    const { data, error } = await supabase.from("Users").insert([
+      {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        username: username,
+        password: hash,
+      },
+    ]);
+    res.redirect("/explore");
+  }
 });
 
 app.post("/addToParksDB", async (req, res) => {
