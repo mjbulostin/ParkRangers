@@ -11,11 +11,11 @@ As a user, I want to explore my options for my upcoming trip. The information av
 * Presentation: Friday, May 7th, 2021.
 
 ## Team members:
+* <a href="https://github.com/mjbulostin" target="_blank">Michael Bulostin</a>
 * <a href="https://github.com/Jessicahaugen" target="_blank">Jessica Haugen</a>
 * <a href="https://github.com/taylorlightbourne" target="_blank">Taylor Lightbourne</a>
 * <a href="https://github.com/pgroves95" target="_blank">Patrick Groves</a>
 * <a href="https://github.com/wsvoboda" target="_blank">Whitney Svoboda</a>
-* <a href="https://github.com/mjbulostin" target="_blank">Michael Bulostin</a>
 
 ### Database table diagram with associations:
 
